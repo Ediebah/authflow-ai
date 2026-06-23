@@ -18,6 +18,10 @@ The headline scenario is elective peripheral arterial stenting for intermittent 
 
 ## 2. How it works (architecture)
 
+
+![AuthFlow architecture](docs/architecture.png)
+
+
 AuthFlow is a UiPath Maestro **BPMN 2.0** process that orchestrates an AI agent, a decision gateway, and human tasks.
 
 ```
