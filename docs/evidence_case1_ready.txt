@@ -1,0 +1,225 @@
+Resource overwrites config file not found: __uipath/uipath.json
+[32m▶ START[0m 
+HTTP Request: GET https://staging.uipath.com/hackathon26_570/DefaultTenant/agenthub_/llm/api/discovery "HTTP/1.1 200 OK"
+HTTP Request: GET https://staging.uipath.com/hackathon26_570/DefaultTenant/agenthub_/llm/api/capabilities "HTTP/1.1 200 OK"
+HTTP Request: POST https://staging.uipath.com/hackathon26_570/DefaultTenant/agenthub_/llm/raw/vendor/openai/model/gpt-4.1-mini-2025-04-14/completions "HTTP/1.1 200 OK"
+/Users/ewane/PROJECTS/Uipath/authflow-ai/criteriamatch-agent/.venv/lib/python3.11/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `none` - serialized value may not be as expected [field_name='parsed', input_value=LLMAssessment(criteria=[C...ndovascular therapy.')]), input_type=LLMAssessment])
+  return self.__pydantic_serializer__.to_python(
+[33m●[0m [1mcriteriamatch[0m
+[1;36mstate[0m
+├── [33mrequest_id[0m: [32mpad_case_1[0m
+├── [33mpayer[0m: [32mMeridian Health Plan[0m
+├── [33mpolicy_id[0m: [32mMHP-VASC-2041[0m
+├── [33mservice_requested[0m: [32mRight SFA angioplasty with stent for intermittent claudication[0m
+├── [33mtherapeutic_area[0m: [32mperipheral_arterial_disease[0m
+├── [33mcriteria[0m [2m(list, 7 items)[0m
+│   ├── [36m#0[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC1[0m
+│   │   ├── [33mdescription[0m: [32mConfirmed PAD with objective evidence.[0m
+│   │   ├── [33mstatus[0m: [32mmet[0m
+│   │   ├── [33mevidence[0m: [32mRight ABI 0.61 (≤ 0.90) and CTA showing 70% stenosis of the right SFA.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mThe record documents an ABI of 0.61 in the symptomatic limb and imaging showing ≥ 50% stenosis,[0m
+│   │   │   [32mmeeting the objective evidence requirement.[0m
+│   │   ├── [33mconfidence[0m: [32m1.0[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#1[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC2[0m
+│   │   ├── [33mdescription[0m: [32mLifestyle-limiting claudication interfering with occupation or essential ADLs.[0m
+│   │   ├── [33mstatus[0m: [32mmet[0m
+│   │   ├── [33mevidence[0m: [32mRight calf pain limiting ability to complete mail route (occupation).[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mSymptoms limit the patient's occupation (mail carrier), satisfying the lifestyle-limiting [0m
+│   │   │   [32mcriterion.[0m
+│   │   ├── [33mconfidence[0m: [32m1.0[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#2[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC3a[0m
+│   │   ├── [33mdescription[0m: [32mCompleted ≥ 3 months structured or supervised exercise program.[0m
+│   │   ├── [33mstatus[0m: [32mmet[0m
+│   │   ├── [33mevidence[0m: [32mCompleted a 14-week supervised exercise therapy program (vascular rehab, 3x/week).[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mThe patient completed a supervised exercise program exceeding 3 months with defined frequency [0m
+│   │   │   [32mand duration.[0m
+│   │   ├── [33mconfidence[0m: [32m1.0[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#3[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC3b[0m
+│   │   ├── [33mdescription[0m: [32mOptimal medical therapy: antiplatelet agent and statin.[0m
+│   │   ├── [33mstatus[0m: [32mmet[0m
+│   │   ├── [33mevidence[0m: [32mOn aspirin 81mg daily and atorvastatin 40mg daily for 8 months.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mThe patient is on both an antiplatelet agent and a statin for over 3 months, meeting this [0m
+│   │   │   [32melement.[0m
+│   │   ├── [33mconfidence[0m: [32m1.0[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#4[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC3c[0m
+│   │   ├── [33mdescription[0m: [32mSmoking-cessation counseling for current smokers.[0m
+│   │   ├── [33mstatus[0m: [32mmet[0m
+│   │   ├── [33mevidence[0m: [32mFormer smoker who quit 6 months ago following cessation counseling at this clinic.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mSmoking cessation counseling documented and patient quit 6 months ago, satisfying this [0m
+│   │   │   [32mcriterion.[0m
+│   │   ├── [33mconfidence[0m: [32m1.0[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#5[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC4[0m
+│   │   ├── [33mdescription[0m: [32mPersistence of lifestyle-limiting symptoms despite conservative therapy.[0m
+│   │   ├── [33mstatus[0m: [32mmet[0m
+│   │   ├── [33mevidence[0m: [32mMinimal improvement after 14-week supervised exercise; remains unable to complete mail route.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mSymptoms persist despite a documented trial of conservative therapy, meeting this criterion.[0m
+│   │   ├── [33mconfidence[0m: [32m1.0[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   └── [36m#6[0m [2m(dict)[0m
+│       ├── [33mcriterion_id[0m: [32mC5[0m
+│       ├── [33mdescription[0m: [32mAnatomic suitability confirmed by imaging for endovascular treatment.[0m
+│       ├── [33mstatus[0m: [32mmet[0m
+│       ├── [33mevidence[0m: [32mCTA shows focal 70% stenosis of right SFA; lesion suitable for endovascular therapy.[0m
+│       ├── [33mevidence_source[0m: [32mClinical record[0m
+│       ├── [33mrationale[0m: [32mImaging confirms lesion location and suitability for endovascular treatment.[0m
+│       ├── [33mconfidence[0m: [32m1.0[0m
+│       └── [33mneeded_if_gap[0m: [32mNone[0m
+├── [33mmissing_documentation[0m [2m(list, 0 items)[0m
+├── [33moverall_determination[0m: [32mready_for_submission[0m
+├── [33mrouting[0m [2m(dict)[0m
+│   ├── [33mbranch[0m: [32mready[0m
+│   └── [33mreason[0m: [32mAll criteria met with complete documentation.[0m
+├── [33mconfidence[0m: [32m1.0[0m
+├── [33msafety_flags[0m [2m(list, 0 items)[0m
+└── [33mcitations[0m [2m(list, 7 items)[0m
+    ├── [36m#0[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 1[0m
+    │   └── [33msnippet[0m: [32mABI 0.61 and CTA 70% stenosis confirm PAD.[0m
+    ├── [36m#1[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 2[0m
+    │   └── [33msnippet[0m: [32mSymptoms limit occupation (mail route).[0m
+    ├── [36m#2[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 3a[0m
+    │   └── [33msnippet[0m: [32m14-week supervised exercise program completed.[0m
+    ├── [36m#3[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 3b[0m
+    │   └── [33msnippet[0m: [32mOn aspirin and atorvastatin for 8 months.[0m
+    ├── [36m#4[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 3c[0m
+    │   └── [33msnippet[0m: [32mSmoking cessation counseling documented; quit 6 months ago.[0m
+    ├── [36m#5[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 4[0m
+    │   └── [33msnippet[0m: [32mSymptoms persist despite conservative therapy.[0m
+    └── [36m#6[0m [2m(dict)[0m
+        ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 5[0m
+        └── [33msnippet[0m: [32mImaging confirms lesion suitable for endovascular therapy.[0m
+Deserializing unregistered type criteriamatch.schema.CriterionStatus from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('criteriamatch.schema', 'CriterionStatus')]
+Deserializing unregistered type criteriamatch.schema.CriterionResult from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('criteriamatch.schema', 'CriterionResult')]
+Deserializing unregistered type criteriamatch.schema.Determination from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('criteriamatch.schema', 'Determination')]
+Deserializing unregistered type criteriamatch.schema.Branch from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('criteriamatch.schema', 'Branch')]
+Deserializing unregistered type criteriamatch.schema.Routing from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('criteriamatch.schema', 'Routing')]
+Deserializing unregistered type criteriamatch.schema.Citation from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('criteriamatch.schema', 'Citation')]
+[32m● END[0m
+[1;36moutput[0m
+├── [33mrequest_id[0m: [32mpad_case_1[0m
+├── [33mpayer[0m: [32mMeridian Health Plan[0m
+├── [33mpolicy_id[0m: [32mMHP-VASC-2041[0m
+├── [33mservice_requested[0m: [32mRight SFA angioplasty with stent for intermittent claudication[0m
+├── [33mtherapeutic_area[0m: [32mperipheral_arterial_disease[0m
+├── [33mcriteria[0m [2m(list, 7 items)[0m
+│   ├── [36m#0[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC1[0m
+│   │   ├── [33mdescription[0m: [32mConfirmed PAD with objective evidence.[0m
+│   │   ├── [33mstatus[0m: [32mmet[0m
+│   │   ├── [33mevidence[0m: [32mRight ABI 0.61 (≤ 0.90) and CTA showing 70% stenosis of the right SFA.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mThe record documents an ABI of 0.61 in the symptomatic limb and imaging showing ≥ 50% stenosis,[0m
+│   │   │   [32mmeeting the objective evidence requirement.[0m
+│   │   ├── [33mconfidence[0m: [32m1.0[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#1[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC2[0m
+│   │   ├── [33mdescription[0m: [32mLifestyle-limiting claudication interfering with occupation or essential ADLs.[0m
+│   │   ├── [33mstatus[0m: [32mmet[0m
+│   │   ├── [33mevidence[0m: [32mRight calf pain limiting ability to complete mail route (occupation).[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mSymptoms limit the patient's occupation (mail carrier), satisfying the lifestyle-limiting [0m
+│   │   │   [32mcriterion.[0m
+│   │   ├── [33mconfidence[0m: [32m1.0[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#2[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC3a[0m
+│   │   ├── [33mdescription[0m: [32mCompleted ≥ 3 months structured or supervised exercise program.[0m
+│   │   ├── [33mstatus[0m: [32mmet[0m
+│   │   ├── [33mevidence[0m: [32mCompleted a 14-week supervised exercise therapy program (vascular rehab, 3x/week).[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mThe patient completed a supervised exercise program exceeding 3 months with defined frequency [0m
+│   │   │   [32mand duration.[0m
+│   │   ├── [33mconfidence[0m: [32m1.0[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#3[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC3b[0m
+│   │   ├── [33mdescription[0m: [32mOptimal medical therapy: antiplatelet agent and statin.[0m
+│   │   ├── [33mstatus[0m: [32mmet[0m
+│   │   ├── [33mevidence[0m: [32mOn aspirin 81mg daily and atorvastatin 40mg daily for 8 months.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mThe patient is on both an antiplatelet agent and a statin for over 3 months, meeting this [0m
+│   │   │   [32melement.[0m
+│   │   ├── [33mconfidence[0m: [32m1.0[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#4[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC3c[0m
+│   │   ├── [33mdescription[0m: [32mSmoking-cessation counseling for current smokers.[0m
+│   │   ├── [33mstatus[0m: [32mmet[0m
+│   │   ├── [33mevidence[0m: [32mFormer smoker who quit 6 months ago following cessation counseling at this clinic.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mSmoking cessation counseling documented and patient quit 6 months ago, satisfying this [0m
+│   │   │   [32mcriterion.[0m
+│   │   ├── [33mconfidence[0m: [32m1.0[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#5[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC4[0m
+│   │   ├── [33mdescription[0m: [32mPersistence of lifestyle-limiting symptoms despite conservative therapy.[0m
+│   │   ├── [33mstatus[0m: [32mmet[0m
+│   │   ├── [33mevidence[0m: [32mMinimal improvement after 14-week supervised exercise; remains unable to complete mail route.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mSymptoms persist despite a documented trial of conservative therapy, meeting this criterion.[0m
+│   │   ├── [33mconfidence[0m: [32m1.0[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   └── [36m#6[0m [2m(dict)[0m
+│       ├── [33mcriterion_id[0m: [32mC5[0m
+│       ├── [33mdescription[0m: [32mAnatomic suitability confirmed by imaging for endovascular treatment.[0m
+│       ├── [33mstatus[0m: [32mmet[0m
+│       ├── [33mevidence[0m: [32mCTA shows focal 70% stenosis of right SFA; lesion suitable for endovascular therapy.[0m
+│       ├── [33mevidence_source[0m: [32mClinical record[0m
+│       ├── [33mrationale[0m: [32mImaging confirms lesion location and suitability for endovascular treatment.[0m
+│       ├── [33mconfidence[0m: [32m1.0[0m
+│       └── [33mneeded_if_gap[0m: [32mNone[0m
+├── [33mmissing_documentation[0m [2m(list, 0 items)[0m
+├── [33moverall_determination[0m: [32mready_for_submission[0m
+├── [33mrouting[0m [2m(dict)[0m
+│   ├── [33mbranch[0m: [32mready[0m
+│   └── [33mreason[0m: [32mAll criteria met with complete documentation.[0m
+├── [33mconfidence[0m: [32m1.0[0m
+├── [33msafety_flags[0m [2m(list, 0 items)[0m
+└── [33mcitations[0m [2m(list, 7 items)[0m
+    ├── [36m#0[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 1[0m
+    │   └── [33msnippet[0m: [32mABI 0.61 and CTA 70% stenosis confirm PAD.[0m
+    ├── [36m#1[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 2[0m
+    │   └── [33msnippet[0m: [32mSymptoms limit occupation (mail route).[0m
+    ├── [36m#2[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 3a[0m
+    │   └── [33msnippet[0m: [32m14-week supervised exercise program completed.[0m
+    ├── [36m#3[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 3b[0m
+    │   └── [33msnippet[0m: [32mOn aspirin and atorvastatin for 8 months.[0m
+    ├── [36m#4[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 3c[0m
+    │   └── [33msnippet[0m: [32mSmoking cessation counseling documented; quit 6 months ago.[0m
+    ├── [36m#5[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 4[0m
+    │   └── [33msnippet[0m: [32mSymptoms persist despite conservative therapy.[0m
+    └── [36m#6[0m [2m(dict)[0m
+        ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 5[0m
+        └── [33msnippet[0m: [32mImaging confirms lesion suitable for endovascular therapy.[0m
+✓  Successful execution.

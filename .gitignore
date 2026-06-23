@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# UiPath auth / cache (NEVER commit, contains tokens)
+__uipath/
+.uipath/
+*.nupkg
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.vercel/
+
+# Environment & secrets
+.env
+.env.*
+*.local
+*.key
+*.pem
+secrets.json
+credentials.json
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Build artifacts
+dist/
+build/

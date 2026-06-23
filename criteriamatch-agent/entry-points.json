@@ -1,0 +1,293 @@
+{
+    "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id": "entry-points.json",
+    "entryPoints": [
+        {
+            "filePath": "agent",
+            "uniqueId": "86379d2f-3bed-4fa3-960c-cd27a4e16c35",
+            "type": "agent",
+            "input": {
+                "type": "object",
+                "properties": {
+                    "request_id": {
+                        "title": "Request Id",
+                        "type": "string"
+                    },
+                    "payer": {
+                        "title": "Payer",
+                        "type": "string"
+                    },
+                    "policy_id": {
+                        "title": "Policy Id",
+                        "type": "string"
+                    },
+                    "service_requested": {
+                        "title": "Service Requested",
+                        "type": "string"
+                    },
+                    "clinical_record": {
+                        "title": "Clinical Record",
+                        "type": "string"
+                    },
+                    "policy_text": {
+                        "title": "Policy Text",
+                        "type": "string"
+                    },
+                    "therapeutic_area": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "request_id",
+                    "payer",
+                    "policy_id",
+                    "service_requested",
+                    "clinical_record",
+                    "policy_text"
+                ]
+            },
+            "output": {
+                "type": "object",
+                "properties": {
+                    "request_id": {
+                        "title": "Request Id",
+                        "type": "string"
+                    },
+                    "payer": {
+                        "title": "Payer",
+                        "type": "string"
+                    },
+                    "policy_id": {
+                        "title": "Policy Id",
+                        "type": "string"
+                    },
+                    "service_requested": {
+                        "title": "Service Requested",
+                        "type": "string"
+                    },
+                    "therapeutic_area": {
+                        "type": "string"
+                    },
+                    "criteria": {
+                        "items": {
+                            "properties": {
+                                "criterion_id": {
+                                    "description": "Policy criterion ID, e.g. 'C1', 'C3a'.",
+                                    "title": "Criterion Id",
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "description": "Plain-language restatement of the criterion.",
+                                    "title": "Description",
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "enum": [
+                                        "met",
+                                        "not_met",
+                                        "missing",
+                                        "uncertain"
+                                    ],
+                                    "title": "CriterionStatus",
+                                    "type": "string"
+                                },
+                                "evidence": {
+                                    "type": "string"
+                                },
+                                "evidence_source": {
+                                    "type": "string"
+                                },
+                                "rationale": {
+                                    "description": "Why this status was assigned.",
+                                    "title": "Rationale",
+                                    "type": "string"
+                                },
+                                "confidence": {
+                                    "maximum": 1.0,
+                                    "minimum": 0.0,
+                                    "title": "Confidence",
+                                    "type": "number"
+                                },
+                                "needed_if_gap": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "criterion_id",
+                                "description",
+                                "status",
+                                "rationale",
+                                "confidence"
+                            ],
+                            "title": "CriterionResult",
+                            "type": "object"
+                        },
+                        "title": "Criteria",
+                        "type": "array"
+                    },
+                    "missing_documentation": {
+                        "items": {
+                            "properties": {
+                                "criterion_id": {
+                                    "title": "Criterion Id",
+                                    "type": "string"
+                                },
+                                "needed": {
+                                    "title": "Needed",
+                                    "type": "string"
+                                },
+                                "blocking": {
+                                    "title": "Blocking",
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": [
+                                "criterion_id",
+                                "needed",
+                                "blocking"
+                            ],
+                            "title": "MissingDoc",
+                            "type": "object"
+                        },
+                        "title": "Missing Documentation",
+                        "type": "array"
+                    },
+                    "overall_determination": {
+                        "enum": [
+                            "ready_for_submission",
+                            "missing_documentation",
+                            "escalate"
+                        ],
+                        "title": "Determination",
+                        "type": "string"
+                    },
+                    "routing": {
+                        "properties": {
+                            "branch": {
+                                "enum": [
+                                    "ready",
+                                    "missing_docs",
+                                    "escalate"
+                                ],
+                                "title": "Branch",
+                                "type": "string"
+                            },
+                            "reason": {
+                                "title": "Reason",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "branch",
+                            "reason"
+                        ],
+                        "title": "Routing",
+                        "type": "object"
+                    },
+                    "confidence": {
+                        "maximum": 1.0,
+                        "minimum": 0.0,
+                        "title": "Confidence",
+                        "type": "number"
+                    },
+                    "safety_flags": {
+                        "items": {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "ai_introduced_medication",
+                                        "ai_introduced_dosage_change",
+                                        "ai_introduced_directive",
+                                        "other"
+                                    ],
+                                    "title": "SafetyFlagType",
+                                    "type": "string"
+                                },
+                                "detail": {
+                                    "title": "Detail",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "type",
+                                "detail"
+                            ],
+                            "title": "SafetyFlag",
+                            "type": "object"
+                        },
+                        "title": "Safety Flags",
+                        "type": "array"
+                    },
+                    "citations": {
+                        "items": {
+                            "properties": {
+                                "source": {
+                                    "description": "e.g. 'MHP-VASC-2041 Criterion 3a'.",
+                                    "title": "Source",
+                                    "type": "string"
+                                },
+                                "snippet": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "source"
+                            ],
+                            "title": "Citation",
+                            "type": "object"
+                        },
+                        "title": "Citations",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "request_id",
+                    "payer",
+                    "policy_id",
+                    "service_requested",
+                    "criteria",
+                    "overall_determination",
+                    "routing",
+                    "confidence"
+                ]
+            },
+            "graph": {
+                "nodes": [
+                    {
+                        "id": "__start__",
+                        "name": "__start__",
+                        "type": "__start__",
+                        "subgraph": null,
+                        "metadata": {}
+                    },
+                    {
+                        "id": "criteriamatch",
+                        "name": "criteriamatch",
+                        "type": "node",
+                        "subgraph": null,
+                        "metadata": {}
+                    },
+                    {
+                        "id": "__end__",
+                        "name": "__end__",
+                        "type": "__end__",
+                        "subgraph": null,
+                        "metadata": {}
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": "__start__",
+                        "target": "criteriamatch",
+                        "label": null
+                    },
+                    {
+                        "source": "criteriamatch",
+                        "target": "__end__",
+                        "label": null
+                    }
+                ]
+            }
+        }
+    ]
+}

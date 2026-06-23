@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1230 519" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="#3A4A57" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="ahO" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="#FA4616" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1230" height="519" fill="#FFFFFF"/>
+
+  <!-- Control plane band -->
+  <rect x="12" y="10" width="1206" height="42" rx="9" fill="#178A9A"/>
+  <text x="615" y="36" text-anchor="middle" fill="#FFFFFF" font-size="17" font-weight="bold">UiPath Maestro — BPMN orchestration &amp; governance (the control plane)</text>
+
+  <!-- External input (top) -->
+  <rect x="24" y="74" width="150" height="38" rx="7" fill="#EDF0F3" stroke="#9AA7B2" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="99" y="91" text-anchor="middle" fill="#3A4A57" font-size="11.5" font-weight="bold">External systems</text>
+  <text x="99" y="106" text-anchor="middle" fill="#4A5868" font-size="10.5">EHR · fax · portal</text>
+  <line x1="99" y1="112" x2="99" y2="140" stroke="#9AA7B2" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+
+  <!-- SPINE: Intake -->
+  <rect x="24" y="142" width="150" height="76" rx="9" fill="#EDF0F3" stroke="#7D8B97" stroke-width="1.4"/>
+  <text x="99" y="166" text-anchor="middle" fill="#1A2733" font-size="14" font-weight="bold">Intake</text>
+  <text x="99" y="185" text-anchor="middle" fill="#4A5868" font-size="10.5">RPA bot +</text>
+  <text x="99" y="199" text-anchor="middle" fill="#4A5868" font-size="10.5">Document</text>
+  <text x="99" y="213" text-anchor="middle" fill="#4A5868" font-size="10.5">Understanding</text>
+
+  <!-- SPINE: Agents -->
+  <rect x="212" y="142" width="158" height="76" rx="9" fill="#E6F4F6" stroke="#178A9A" stroke-width="1.6"/>
+  <text x="291" y="164" text-anchor="middle" fill="#0E5A66" font-size="14" font-weight="bold">Triage + Evidence</text>
+  <text x="291" y="183" text-anchor="middle" fill="#3A6770" font-size="10.5">Agent Builder agents</text>
+  <text x="291" y="200" text-anchor="middle" fill="#4A5868" font-size="10.5">classify request,</text>
+  <text x="291" y="214" text-anchor="middle" fill="#4A5868" font-size="10.5">extract chart evidence</text>
+
+  <!-- SPINE: CriteriaMatch (external/orange) -->
+  <rect x="408" y="142" width="160" height="76" rx="9" fill="#FFEDE6" stroke="#FA4616" stroke-width="1.8"/>
+  <text x="488" y="164" text-anchor="middle" fill="#B8330F" font-size="14" font-weight="bold">CriteriaMatch</text>
+  <text x="488" y="183" text-anchor="middle" fill="#C2440F" font-size="10.5" font-weight="bold">External · LangChain</text>
+  <text x="488" y="200" text-anchor="middle" fill="#4A5868" font-size="10.5">evidence vs criteria →</text>
+  <text x="488" y="214" text-anchor="middle" fill="#4A5868" font-size="10.5">met / missing / uncertain</text>
+
+  <!-- External KB (bottom, into CriteriaMatch) -->
+  <rect x="408" y="250" width="160" height="38" rx="7" fill="#EDF0F3" stroke="#9AA7B2" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="488" y="267" text-anchor="middle" fill="#3A4A57" font-size="11.5" font-weight="bold">Payer policy KB</text>
+  <text x="488" y="281" text-anchor="middle" fill="#4A5868" font-size="10.5">Qdrant RAG (external)</text>
+  <line x1="488" y1="250" x2="488" y2="220" stroke="#9AA7B2" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+
+  <!-- Gateway diamond -->
+  <polygon points="648,142 700,180 648,218 596,180" fill="#FFFFFF" stroke="#3A4A57" stroke-width="1.8"/>
+  <text x="648" y="176" text-anchor="middle" fill="#1A2733" font-size="11" font-weight="bold">Route</text>
+  <text x="648" y="190" text-anchor="middle" fill="#1A2733" font-size="11" font-weight="bold">by branch</text>
+
+  <!-- Spine arrows -->
+  <line x1="174" y1="180" x2="210" y2="180" stroke="#3A4A57" stroke-width="1.8" marker-end="url(#ah)"/>
+  <line x1="370" y1="180" x2="406" y2="180" stroke="#3A4A57" stroke-width="1.8" marker-end="url(#ah)"/>
+  <line x1="568" y1="180" x2="594" y2="180" stroke="#FA4616" stroke-width="1.8" marker-end="url(#ahO)"/>
+
+  <!-- BRANCHES (right) -->
+  <!-- READY -->
+  <rect x="792" y="92" width="414" height="54" rx="9" fill="#E4F2EA" stroke="#2C7A4B" stroke-width="1.6"/>
+  <text x="806" y="115" fill="#1E5A37" font-size="13.5" font-weight="bold">READY</text>
+  <text x="806" y="134" fill="#3A4A57" font-size="11">→ Auth Packet Agent → Payer portal submit (RPA / API)</text>
+
+  <!-- MISSING_DOCS -->
+  <rect x="792" y="156" width="414" height="54" rx="9" fill="#FBF0DA" stroke="#B07D14" stroke-width="1.6"/>
+  <text x="806" y="179" fill="#8A5F0A" font-size="13.5" font-weight="bold">MISSING DOCS</text>
+  <text x="806" y="198" fill="#3A4A57" font-size="11">→ Staff task (Action Center) · process suspends &amp; resumes</text>
+  <circle cx="1180" cy="170" r="6.5" fill="#B07D14"/>
+  <path d="M1180 167.5 a2.4 2.4 0 1 1 0.01 0 M1175.5 178 a4.5 4.5 0 0 1 9 0 z" fill="#FBF0DA"/>
+
+  <!-- ESCALATE -->
+  <rect x="792" y="220" width="414" height="54" rx="9" fill="#F8E5E2" stroke="#B0392B" stroke-width="1.6"/>
+  <text x="806" y="243" fill="#8A2C20" font-size="13.5" font-weight="bold">ESCALATE</text>
+  <text x="806" y="262" fill="#3A4A57" font-size="11">→ Medical Director (Action Center) · never auto-denied</text>
+  <circle cx="1180" cy="234" r="6.5" fill="#B0392B"/>
+  <path d="M1180 231.5 a2.4 2.4 0 1 1 0.01 0 M1175.5 242 a4.5 4.5 0 0 1 9 0 z" fill="#F8E5E2"/>
+
+  <!-- Gateway fan arrows -->
+  <path d="M700 175 C 740 140, 760 119, 790 119" fill="none" stroke="#2C7A4B" stroke-width="1.8" marker-end="url(#ah)"/>
+  <line x1="700" y1="183" x2="790" y2="183" stroke="#B07D14" stroke-width="1.8" marker-end="url(#ah)"/>
+  <path d="M700 185 C 740 220, 760 247, 790 247" fill="none" stroke="#B0392B" stroke-width="1.8" marker-end="url(#ah)"/>
+
+  <!-- Suspend / resume loop back to CriteriaMatch -->
+  <path d="M792 200 C 700 200, 660 360, 540 360 C 510 360, 495 300, 489 290" fill="none" stroke="#B07D14" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#ah)"/>
+  <text x="648" y="376" text-anchor="middle" fill="#8A5F0A" font-size="10.5" font-style="italic">staff supplies docs → re-check &amp; resume</text>
+
+  <!-- Legend -->
+  <g font-size="11" fill="#3A4A57">
+    <rect x="24" y="402" width="16" height="12" rx="2" fill="#FFEDE6" stroke="#FA4616" stroke-width="1.4"/>
+    <text x="46" y="412">External agent (LangChain)</text>
+    <rect x="238" y="402" width="16" height="12" rx="2" fill="#EDF0F3" stroke="#9AA7B2" stroke-width="1.4" stroke-dasharray="4 3"/>
+    <text x="260" y="412">External system / data</text>
+    <circle cx="438" cy="408" r="6.5" fill="#3A4A57"/>
+    <path d="M438 405.5 a2.4 2.4 0 1 1 0.01 0 M433.5 416 a4.5 4.5 0 0 1 9 0 z" fill="#FFFFFF"/>
+    <text x="452" y="412">Human-in-the-loop</text>
+    <rect x="592" y="402" width="16" height="12" rx="2" fill="#E6F4F6" stroke="#178A9A" stroke-width="1.4"/>
+    <text x="614" y="412">UiPath low-code agent</text>
+  </g>
+
+  <!-- Governance band -->
+  <rect x="12" y="436" width="1206" height="42" rx="9" fill="#EDF0F3" stroke="#C3CBD2" stroke-width="1.2"/>
+  <text x="615" y="462" text-anchor="middle" fill="#2A3A47" font-size="13" font-weight="bold">Governance: audit log  ·  SLA / turnaround clock  ·  UiPath Insights dashboard</text>
+</svg>

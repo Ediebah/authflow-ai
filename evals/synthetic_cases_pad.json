@@ -1,0 +1,60 @@
+{
+  "suite": "pad_peripheral_stenting",
+  "policy_id": "MHP-VASC-2041",
+  "note": "Expected outcomes for the three synthetic PAD notes. Use with the existing eval harness (npm run eval). The decisive assertion for the demo is case_2: criterion C3a must resolve to 'uncertain' or 'missing' and the branch must be 'missing_docs'. If case_2 ever returns 'ready', the centerpiece demo is broken.",
+  "cases": [
+    {
+      "id": "pad_case_1_clean",
+      "source_note": "CASE 1 — Clean approval",
+      "expected_determination": "ready_for_submission",
+      "expected_branch": "ready",
+      "expected_criteria": {
+        "C1": "met",
+        "C2": "met",
+        "C3a": "met",
+        "C3b": "met",
+        "C3c": "met",
+        "C4": "met",
+        "C5": "met"
+      },
+      "must_include": ["supervised exercise", "ABI 0.61", "superficial femoral", "ready"],
+      "must_not_include": ["approved", "denied"]
+    },
+    {
+      "id": "pad_case_2_ambiguous",
+      "source_note": "CASE 2 — Missing / ambiguous documentation (CENTERPIECE)",
+      "expected_determination": "missing_documentation",
+      "expected_branch": "missing_docs",
+      "expected_criteria": {
+        "C1": "met",
+        "C2": "met",
+        "C3a": ["uncertain", "missing"],
+        "C3b": "met",
+        "C5": "met"
+      },
+      "must_include": ["structured", "exercise", "missing_docs"],
+      "must_not_include": ["approved", "denied", "ready_for_submission"],
+      "assertions": [
+        "criteria C3a status is one of ['uncertain','missing']",
+        "missing_documentation contains an item for C3a asking to confirm a structured/supervised exercise program",
+        "routing.branch == 'missing_docs'"
+      ]
+    },
+    {
+      "id": "pad_case_3_discordant",
+      "source_note": "CASE 3 — Guideline-discordant",
+      "expected_determination": "escalate",
+      "expected_branch": "escalate",
+      "expected_criteria": {
+        "C2": "not_met",
+        "C3": "not_met"
+      },
+      "must_include": ["escalate", "Medical Director"],
+      "must_not_include": ["approved", "denied", "ready"],
+      "assertions": [
+        "routing.branch == 'escalate'",
+        "the agent does NOT auto-deny — overall_determination is 'escalate', not a denial"
+      ]
+    }
+  ]
+}

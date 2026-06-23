@@ -1,0 +1,11 @@
+# CriteriaMatch dependencies
+langchain>=0.3
+langchain-openai>=0.2
+pydantic>=2.6
+fastapi>=0.110
+uvicorn>=0.29
+python-dotenv>=1.0
+
+# Optional — only if you wire retrieve_policy_text() to the existing Qdrant KB:
+# qdrant-client>=1.9
+# openai>=1.30   # (already used by Clinica AI for embeddings)

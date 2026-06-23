@@ -1,0 +1,231 @@
+Resource overwrites config file not found: __uipath/uipath.json
+[32m▶ START[0m 
+HTTP Request: GET https://staging.uipath.com/hackathon26_570/DefaultTenant/agenthub_/llm/api/discovery "HTTP/1.1 200 OK"
+HTTP Request: GET https://staging.uipath.com/hackathon26_570/DefaultTenant/agenthub_/llm/api/capabilities "HTTP/1.1 200 OK"
+HTTP Request: POST https://staging.uipath.com/hackathon26_570/DefaultTenant/agenthub_/llm/raw/vendor/openai/model/gpt-4.1-mini-2025-04-14/completions "HTTP/1.1 200 OK"
+/Users/ewane/PROJECTS/Uipath/authflow-ai/criteriamatch-agent/.venv/lib/python3.11/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `none` - serialized value may not be as expected [field_name='parsed', input_value=LLMAssessment(criteria=[C...ovascular treatment.')]), input_type=LLMAssessment])
+  return self.__pydantic_serializer__.to_python(
+[33m●[0m [1mcriteriamatch[0m
+[1;36mstate[0m
+├── [33mrequest_id[0m: [32mpad_case_3[0m
+├── [33mpayer[0m: [32mMeridian Health Plan[0m
+├── [33mpolicy_id[0m: [32mMHP-VASC-2041[0m
+├── [33mservice_requested[0m: [32mLeft lower-extremity angioplasty/stent for recreational running[0m
+├── [33mtherapeutic_area[0m: [32mperipheral_arterial_disease[0m
+├── [33mcriteria[0m [2m(list, 7 items)[0m
+│   ├── [36m#0[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC1[0m
+│   │   ├── [33mdescription[0m: [32mConfirmed PAD with objective evidence.[0m
+│   │   ├── [33mstatus[0m: [32mnot_met[0m
+│   │   ├── [33mevidence[0m: [32mABI 0.91 (borderline). Duplex: mild left SFA irregularity, <50% stenosis, no focal high-grade [0m
+│   │   │   [32mlesion.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mABI is borderline (0.91) and imaging shows less than 50% stenosis, which does not meet the [0m
+│   │   │   [32mpolicy's objective evidence threshold for PAD.[0m
+│   │   ├── [33mconfidence[0m: [32m0.95[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#1[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC2[0m
+│   │   ├── [33mdescription[0m: [32mLifestyle-limiting claudication interfering with occupation or essential ADLs.[0m
+│   │   ├── [33mstatus[0m: [32mnot_met[0m
+│   │   ├── [33mevidence[0m: [32mAble to walk without limitation and works without difficulty. Symptoms limit recreational [0m
+│   │   │   [32mrunning only; goal is to return to prior running distance faster.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mSymptoms limit only recreational activity, not occupation or essential activities of daily [0m
+│   │   │   [32mliving, which does not satisfy this criterion.[0m
+│   │   ├── [33mconfidence[0m: [32m0.95[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#2[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC3a[0m
+│   │   ├── [33mdescription[0m: [32mCompleted structured or supervised exercise program for ≥ 3 months.[0m
+│   │   ├── [33mstatus[0m: [32mnot_met[0m
+│   │   ├── [33mevidence[0m: [32mNo structured exercise program undertaken.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mNo evidence of a structured or supervised exercise program; informal or absent exercise does [0m
+│   │   │   [32mnot meet the criterion.[0m
+│   │   ├── [33mconfidence[0m: [32m0.95[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#3[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC3b[0m
+│   │   ├── [33mdescription[0m: [32mOptimal medical therapy with antiplatelet agent and statin.[0m
+│   │   ├── [33mstatus[0m: [32mnot_met[0m
+│   │   ├── [33mevidence[0m: [32mNo antiplatelet, no statin documented.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mNo documentation of antiplatelet or statin therapy, which is required unless contraindicated or[0m
+│   │   │   [32mintolerant (not documented).[0m
+│   │   ├── [33mconfidence[0m: [32m0.95[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#4[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC3c[0m
+│   │   ├── [33mdescription[0m: [32mSmoking-cessation counseling for current smokers.[0m
+│   │   ├── [33mstatus[0m: [32mnot_met[0m
+│   │   ├── [33mevidence[0m: [32mCurrent smoker (~1/2 pack/day); no cessation counseling documented.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mPatient is a current smoker but no smoking-cessation counseling is documented.[0m
+│   │   ├── [33mconfidence[0m: [32m0.95[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#5[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC4[0m
+│   │   ├── [33mdescription[0m: [32mPersistence of lifestyle-limiting symptoms despite conservative therapy.[0m
+│   │   ├── [33mstatus[0m: [32mnot_met[0m
+│   │   ├── [33mevidence[0m: [32mNo documented conservative therapy trial; symptoms limit only recreational activity.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mNo conservative therapy trial documented and symptoms are not lifestyle-limiting per policy [0m
+│   │   │   [32mdefinition, so persistence cannot be established.[0m
+│   │   ├── [33mconfidence[0m: [32m0.95[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   └── [36m#6[0m [2m(dict)[0m
+│       ├── [33mcriterion_id[0m: [32mC5[0m
+│       ├── [33mdescription[0m: [32mAnatomic suitability confirmed by imaging for endovascular treatment.[0m
+│       ├── [33mstatus[0m: [32mnot_met[0m
+│       ├── [33mevidence[0m: [32mDuplex: mild left SFA irregularity, <50% stenosis, no focal high-grade lesion.[0m
+│       ├── [33mevidence_source[0m: [32mClinical record[0m
+│       ├── [33mrationale[0m: [32mImaging does not show ≥ 50% stenosis or target lesion suitable for endovascular treatment.[0m
+│       ├── [33mconfidence[0m: [32m0.95[0m
+│       └── [33mneeded_if_gap[0m: [32mNone[0m
+├── [33mmissing_documentation[0m [2m(list, 0 items)[0m
+├── [33moverall_determination[0m: [32mescalate[0m
+├── [33mrouting[0m [2m(dict)[0m
+│   ├── [33mbranch[0m: [32mescalate[0m
+│   └── [33mreason[0m: [32mCriteria not met (C1, C2, C3a, C3b, C3c, C4, C5); request appears guideline-discordant. Referred to a [0m
+│       [32mclinician - not auto-denied.[0m
+├── [33mconfidence[0m: [32m0.95[0m
+├── [33msafety_flags[0m [2m(list, 0 items)[0m
+└── [33mcitations[0m [2m(list, 7 items)[0m
+    ├── [36m#0[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 1[0m
+    │   └── [33msnippet[0m: [32mABI ≤ 0.90 or imaging ≥ 50% stenosis required for PAD confirmation.[0m
+    ├── [36m#1[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 2[0m
+    │   └── [33msnippet[0m: [32mClaudication must limit occupation or essential ADLs, not just recreational activity.[0m
+    ├── [36m#2[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 3a[0m
+    │   └── [33msnippet[0m: [32mStructured or supervised exercise program ≥ 3 months required.[0m
+    ├── [36m#3[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 3b[0m
+    │   └── [33msnippet[0m: [32mAntiplatelet and statin therapy required unless contraindicated.[0m
+    ├── [36m#4[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 3c[0m
+    │   └── [33msnippet[0m: [32mSmoking-cessation counseling required for current smokers.[0m
+    ├── [36m#5[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 4[0m
+    │   └── [33msnippet[0m: [32mSymptoms must persist despite conservative therapy.[0m
+    └── [36m#6[0m [2m(dict)[0m
+        ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 5[0m
+        └── [33msnippet[0m: [32mImaging must confirm anatomic suitability for endovascular treatment.[0m
+Deserializing unregistered type criteriamatch.schema.CriterionStatus from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('criteriamatch.schema', 'CriterionStatus')]
+Deserializing unregistered type criteriamatch.schema.CriterionResult from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('criteriamatch.schema', 'CriterionResult')]
+Deserializing unregistered type criteriamatch.schema.Determination from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('criteriamatch.schema', 'Determination')]
+Deserializing unregistered type criteriamatch.schema.Branch from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('criteriamatch.schema', 'Branch')]
+Deserializing unregistered type criteriamatch.schema.Routing from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('criteriamatch.schema', 'Routing')]
+Deserializing unregistered type criteriamatch.schema.Citation from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('criteriamatch.schema', 'Citation')]
+[32m● END[0m
+[1;36moutput[0m
+├── [33mrequest_id[0m: [32mpad_case_3[0m
+├── [33mpayer[0m: [32mMeridian Health Plan[0m
+├── [33mpolicy_id[0m: [32mMHP-VASC-2041[0m
+├── [33mservice_requested[0m: [32mLeft lower-extremity angioplasty/stent for recreational running[0m
+├── [33mtherapeutic_area[0m: [32mperipheral_arterial_disease[0m
+├── [33mcriteria[0m [2m(list, 7 items)[0m
+│   ├── [36m#0[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC1[0m
+│   │   ├── [33mdescription[0m: [32mConfirmed PAD with objective evidence.[0m
+│   │   ├── [33mstatus[0m: [32mnot_met[0m
+│   │   ├── [33mevidence[0m: [32mABI 0.91 (borderline). Duplex: mild left SFA irregularity, <50% stenosis, no focal high-grade [0m
+│   │   │   [32mlesion.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mABI is borderline (0.91) and imaging shows less than 50% stenosis, which does not meet the [0m
+│   │   │   [32mpolicy's objective evidence threshold for PAD.[0m
+│   │   ├── [33mconfidence[0m: [32m0.95[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#1[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC2[0m
+│   │   ├── [33mdescription[0m: [32mLifestyle-limiting claudication interfering with occupation or essential ADLs.[0m
+│   │   ├── [33mstatus[0m: [32mnot_met[0m
+│   │   ├── [33mevidence[0m: [32mAble to walk without limitation and works without difficulty. Symptoms limit recreational [0m
+│   │   │   [32mrunning only; goal is to return to prior running distance faster.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mSymptoms limit only recreational activity, not occupation or essential activities of daily [0m
+│   │   │   [32mliving, which does not satisfy this criterion.[0m
+│   │   ├── [33mconfidence[0m: [32m0.95[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#2[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC3a[0m
+│   │   ├── [33mdescription[0m: [32mCompleted structured or supervised exercise program for ≥ 3 months.[0m
+│   │   ├── [33mstatus[0m: [32mnot_met[0m
+│   │   ├── [33mevidence[0m: [32mNo structured exercise program undertaken.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mNo evidence of a structured or supervised exercise program; informal or absent exercise does [0m
+│   │   │   [32mnot meet the criterion.[0m
+│   │   ├── [33mconfidence[0m: [32m0.95[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#3[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC3b[0m
+│   │   ├── [33mdescription[0m: [32mOptimal medical therapy with antiplatelet agent and statin.[0m
+│   │   ├── [33mstatus[0m: [32mnot_met[0m
+│   │   ├── [33mevidence[0m: [32mNo antiplatelet, no statin documented.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mNo documentation of antiplatelet or statin therapy, which is required unless contraindicated or[0m
+│   │   │   [32mintolerant (not documented).[0m
+│   │   ├── [33mconfidence[0m: [32m0.95[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#4[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC3c[0m
+│   │   ├── [33mdescription[0m: [32mSmoking-cessation counseling for current smokers.[0m
+│   │   ├── [33mstatus[0m: [32mnot_met[0m
+│   │   ├── [33mevidence[0m: [32mCurrent smoker (~1/2 pack/day); no cessation counseling documented.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mPatient is a current smoker but no smoking-cessation counseling is documented.[0m
+│   │   ├── [33mconfidence[0m: [32m0.95[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   ├── [36m#5[0m [2m(dict)[0m
+│   │   ├── [33mcriterion_id[0m: [32mC4[0m
+│   │   ├── [33mdescription[0m: [32mPersistence of lifestyle-limiting symptoms despite conservative therapy.[0m
+│   │   ├── [33mstatus[0m: [32mnot_met[0m
+│   │   ├── [33mevidence[0m: [32mNo documented conservative therapy trial; symptoms limit only recreational activity.[0m
+│   │   ├── [33mevidence_source[0m: [32mClinical record[0m
+│   │   ├── [33mrationale[0m: [32mNo conservative therapy trial documented and symptoms are not lifestyle-limiting per policy [0m
+│   │   │   [32mdefinition, so persistence cannot be established.[0m
+│   │   ├── [33mconfidence[0m: [32m0.95[0m
+│   │   └── [33mneeded_if_gap[0m: [32mNone[0m
+│   └── [36m#6[0m [2m(dict)[0m
+│       ├── [33mcriterion_id[0m: [32mC5[0m
+│       ├── [33mdescription[0m: [32mAnatomic suitability confirmed by imaging for endovascular treatment.[0m
+│       ├── [33mstatus[0m: [32mnot_met[0m
+│       ├── [33mevidence[0m: [32mDuplex: mild left SFA irregularity, <50% stenosis, no focal high-grade lesion.[0m
+│       ├── [33mevidence_source[0m: [32mClinical record[0m
+│       ├── [33mrationale[0m: [32mImaging does not show ≥ 50% stenosis or target lesion suitable for endovascular treatment.[0m
+│       ├── [33mconfidence[0m: [32m0.95[0m
+│       └── [33mneeded_if_gap[0m: [32mNone[0m
+├── [33mmissing_documentation[0m [2m(list, 0 items)[0m
+├── [33moverall_determination[0m: [32mescalate[0m
+├── [33mrouting[0m [2m(dict)[0m
+│   ├── [33mbranch[0m: [32mescalate[0m
+│   └── [33mreason[0m: [32mCriteria not met (C1, C2, C3a, C3b, C3c, C4, C5); request appears guideline-discordant. Referred to a [0m
+│       [32mclinician - not auto-denied.[0m
+├── [33mconfidence[0m: [32m0.95[0m
+├── [33msafety_flags[0m [2m(list, 0 items)[0m
+└── [33mcitations[0m [2m(list, 7 items)[0m
+    ├── [36m#0[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 1[0m
+    │   └── [33msnippet[0m: [32mABI ≤ 0.90 or imaging ≥ 50% stenosis required for PAD confirmation.[0m
+    ├── [36m#1[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 2[0m
+    │   └── [33msnippet[0m: [32mClaudication must limit occupation or essential ADLs, not just recreational activity.[0m
+    ├── [36m#2[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 3a[0m
+    │   └── [33msnippet[0m: [32mStructured or supervised exercise program ≥ 3 months required.[0m
+    ├── [36m#3[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 3b[0m
+    │   └── [33msnippet[0m: [32mAntiplatelet and statin therapy required unless contraindicated.[0m
+    ├── [36m#4[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 3c[0m
+    │   └── [33msnippet[0m: [32mSmoking-cessation counseling required for current smokers.[0m
+    ├── [36m#5[0m [2m(dict)[0m
+    │   ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 4[0m
+    │   └── [33msnippet[0m: [32mSymptoms must persist despite conservative therapy.[0m
+    └── [36m#6[0m [2m(dict)[0m
+        ├── [33msource[0m: [32mMHP-VASC-2041 Criterion 5[0m
+        └── [33msnippet[0m: [32mImaging must confirm anatomic suitability for endovascular treatment.[0m
+✓  Successful execution.

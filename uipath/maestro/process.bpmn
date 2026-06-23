@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:uipath="http://uipath.org/schema/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" exporter="UiPath Studio Web (https://uipath.com)" exporterVersion="7e85656f">
+  <bpmn:process id="Process_1" name="Process">
+    <bpmn:extensionElements>
+      <uipath:variables version="v1">
+        <uipath:inputOutput id="requestId" name="request_id" type="string" elementId="Process_1" default="pad_case_3" custom="true" />
+        <uipath:inputOutput id="intakeDocumentRef" name="intake_document_ref" type="file" elementId="Process_1" default="" custom="true" />
+        <uipath:inputOutput id="extractedRequest" name="extracted_request" type="jsonSchema" elementId="Process_1" default="" custom="true"><![CDATA[{"type":"object","$schema":"http://json-schema.org/draft-07/schema#"}]]></uipath:inputOutput>
+        <uipath:inputOutput id="clinicalEvidence" name="clinical_evidence" type="jsonSchema" elementId="Process_1" default="" custom="true"><![CDATA[{"type":"object","$schema":"http://json-schema.org/draft-07/schema#"}]]></uipath:inputOutput>
+        <uipath:inputOutput id="criteriamatchResult" name="criteriamatch_result" type="jsonSchema" elementId="Process_1" default="" custom="true"><![CDATA[{"type":"object","$schema":"http://json-schema.org/draft-07/schema#"}]]></uipath:inputOutput>
+        <uipath:inputOutput id="routingBranch" name="routing_branch" type="string" elementId="Process_1" default="" custom="true" />
+        <uipath:inputOutput id="packetRef" name="packet_ref" type="file" elementId="Process_1" default="" custom="true" />
+        <uipath:inputOutput id="submissionStatus" name="submission_status" type="string" elementId="Process_1" default="" custom="true" />
+        <uipath:inputOutput id="auditLog" name="audit_log" type="jsonSchema" elementId="Process_1" default="" custom="true"><![CDATA[{"type":"object","$schema":"http://json-schema.org/draft-07/schema#"}]]></uipath:inputOutput>
+        <uipath:inputOutput id="clinicalRecordVar" name="clinical_record_var" type="string" elementId="Process_1" default="58M, software engineer (desk-based), avid recreational runner. CC: calf discomfort when running longer distances — some left calf discomfort after roughly half a mile of running; able to walk without limitation and works without difficulty. Stated goal: returning to prior running distance faster. No rest pain, no wounds. ABI 0.91 (borderline). Duplex: mild left SFA irregularity, &#60;50% stenosis, no focal high-grade lesion. No antiplatelet, no statin. Current smoker (~1/2 pack/day); no cessation counseling documented. No structured exercise program undertaken. Patient requests stenting to accelerate return to recreational running. Request prior authorization for left lower-extremity angioplasty/stent." custom="true" />
+        <uipath:inputOutput id="policyNote" name="policy_note" type="string" elementId="Process_1" default="# Meridian Health Plan - Medical Coverage Policy**Policy:** Elective Endovascular Revascularization (Angioplasty / Stenting) ofLower-Extremity Arteries for Intermittent Claudication**Policy ID:** MHP-VASC-2041**Effective:** 2026-01-01 · **Review cycle:** Annual&#62; SYNTHETIC / MOCK POLICY. Meridian Health Plan is fictional. The criteria below&#62; are a realistic composite of medical-necessity requirements commonly found in&#62; commercial payer coverage policies for elective peripheral revascularization.&#62; This file exists for the AuthFlow AI hackathon demo. To use a real payer&#39;s&#62; rules, drop their published policy text into `data/policies/` and re-ingest.---## ScopeThis policy governs **prior authorization** for **elective** endovascularrevascularization — percutaneous transluminal angioplasty (PTA) and/or stentplacement — of the **iliac and femoropopliteal** segments for **intermittentclaudication** (Rutherford category 2–3 / Fontaine stage IIb).This policy does **not** apply to critical limb-threatening ischemia (rest pain,ulceration, gangrene — Rutherford 4–6), which is reviewed under the urgentrevascularization policy (MHP-VASC-2055) and is **not** subject to electiveprior authorization.---## Medical Necessity CriteriaEndovascular revascularization for intermittent claudication is consideredmedically necessary when **ALL** of the following are met and documented:**Criterion 1 — Confirmed PAD with objective evidence.**A diagnosis of peripheral arterial disease supported by at least one objectivemeasure:- Resting ankle-brachial index (ABI) ≤ 0.90 in the symptomatic limb; **or**- Toe-brachial index (TBI) ≤ 0.70 when vessels are non-compressible (ABI &#62; 1.40); **or**- Imaging (duplex ultrasound, CTA, or MRA) demonstrating ≥ 50% stenosis in the  arterial segment corresponding to the patient&#39;s symptoms.**Criterion 2 — Lifestyle-limiting claudication.**Intermittent claudication (Rutherford 2–3 / Fontaine IIb) that interferes withthe patient&#39;s **occupation or essential activities of daily living**, documentedin the clinical record. Symptoms limiting only recreational or discretionaryactivity do **not** by themselves satisfy this criterion.**Criterion 3 — Completed trial of conservative therapy (≥ 3 months).**A documented trial of conservative management of **at least 3 months** prior tothe request, comprising **all** of:- **3a.** A **structured or supervised exercise program** (e.g., a supervised  exercise therapy program, or a documented structured walking program with  defined frequency/duration). Informal advice to &#34;walk more&#34; does **not** meet  this element.- **3b.** Optimal medical therapy: an **antiplatelet agent** and a **statin**  (unless contraindicated or documented intolerance).- **3c.** **Smoking-cessation counseling** for current smokers.**Criterion 4 — Persistence despite conservative therapy.**Documented persistence or progression of lifestyle-limiting symptoms despite theCriterion 3 trial.**Criterion 5 — Anatomic suitability.**Imaging (duplex, CTA, or MRA) identifying the target lesion(s) and confirmingsuitability for endovascular treatment.---## Not Medically NecessaryA request is **not** medically necessary, and is **not** to be auto-denied but**referred to a Medical Director / peer-to-peer review**, when it isguideline-discordant — for example:- Asymptomatic PAD, or claudication that is **not** lifestyle-limiting.- **No documented ≥ 3-month conservative therapy trial** (Criterion 3 absent).- Intervention requested to accelerate return to recreational activity in the  absence of occupational or essential-ADL limitation.---## Utilization-Management Routing (for AuthFlow demo mapping)| Documentation state | Determination | BPMN branch ||---|---|---|| Criteria 1–5 all met, complete | Approvable | `ready` → packet + submit || One or more required elements **absent or ambiguous** | Pend for documentation | `missing_docs` → staff User task || Guideline-discordant (see above) | Refer for clinical review | `escalate` → Medical Director User task |---## References (illustrative, synthetic policy)1. Society for Vascular Surgery / TASC II — practice guidance on claudication management (conservative therapy first).2. ACC/AHA guideline on the management of lower-extremity PAD.3. Meridian Health Plan internal UM criteria MHP-VASC-2041 (fictional)." custom="true" />
+        <uipath:inputOutput id="payerVar" name="payer_var" type="string" elementId="Process_1" default="Meridian Health Plan" custom="true" />
+        <uipath:inputOutput id="policyIdVar" name="policy_id_var" type="string" elementId="Process_1" default="MHP-VASC-2041" custom="true" />
+        <uipath:inputOutput id="serviceRequestedVar" name="service_requested_var" type="string" elementId="Process_1" default="Right SFA angioplasty with stent for intermittent claudication" custom="true" />
+        <uipath:inputOutput id="therapeuticAreaVar" name="therapeutic_area_var" type="string" elementId="Process_1" default="peripheral_arterial_disease" custom="true" />
+        <uipath:inputOutput id="error" name="Error" type="jsonSchema" elementId="Activity_eoYr7Z"><![CDATA[{"type":"object","properties":{"code":{"type":"string"},"message":{"type":"string"},"detail":{"type":"string"},"category":{"type":"string"},"status":{"type":"number"},"element":{"type":"string"}}}]]></uipath:inputOutput>
+        <uipath:inputOutput id="requestId2" name="request_id" type="string" elementId="Activity_eoYr7Z" />
+        <uipath:inputOutput id="payer" name="payer" type="string" elementId="Activity_eoYr7Z" />
+        <uipath:inputOutput id="policyId" name="policy_id" type="string" elementId="Activity_eoYr7Z" />
+        <uipath:inputOutput id="serviceRequested" name="service_requested" type="string" elementId="Activity_eoYr7Z" />
+        <uipath:inputOutput id="therapeuticArea" name="therapeutic_area" type="string" elementId="Activity_eoYr7Z" />
+        <uipath:inputOutput id="criteria" name="criteria" type="jsonSchema" subType="object" elementId="Activity_eoYr7Z"><![CDATA[{"items":{"properties":{"criterion_id":{"description":"Policy criterion ID, e.g. 'C1', 'C3a'.","title":"Criterion Id","type":"string"},"description":{"description":"Plain-language restatement of the criterion.","title":"Description","type":"string"},"status":{"enum":["met","not_met","missing","uncertain"],"title":"CriterionStatus","type":"string"},"evidence":{"type":"string"},"evidence_source":{"type":"string"},"rationale":{"description":"Why this status was assigned.","title":"Rationale","type":"string"},"confidence":{"maximum":1,"minimum":0,"title":"Confidence","type":"number"},"needed_if_gap":{"type":"string"}},"title":"CriterionResult","type":"object"},"title":"Criteria","type":"array","$schema":"http://json-schema.org/draft-07/schema#"}]]></uipath:inputOutput>
+        <uipath:inputOutput id="missingDocumentation" name="missing_documentation" type="jsonSchema" subType="object" elementId="Activity_eoYr7Z"><![CDATA[{"items":{"properties":{"criterion_id":{"title":"Criterion Id","type":"string"},"needed":{"title":"Needed","type":"string"},"blocking":{"title":"Blocking","type":"boolean"}},"title":"MissingDoc","type":"object"},"title":"Missing Documentation","type":"array","$schema":"http://json-schema.org/draft-07/schema#"}]]></uipath:inputOutput>
+        <uipath:inputOutput id="overallDetermination" name="overall_determination" type="string" elementId="Activity_eoYr7Z" />
+        <uipath:inputOutput id="routing" name="routing" type="jsonSchema" elementId="Activity_eoYr7Z"><![CDATA[{"properties":{"branch":{"enum":["ready","missing_docs","escalate"],"title":"Branch","type":"string"},"reason":{"title":"Reason","type":"string"}},"title":"Routing","type":"object","$schema":"http://json-schema.org/draft-07/schema#"}]]></uipath:inputOutput>
+        <uipath:inputOutput id="confidence" name="confidence" type="number" elementId="Activity_eoYr7Z" />
+        <uipath:inputOutput id="safetyFlags" name="safety_flags" type="jsonSchema" subType="object" elementId="Activity_eoYr7Z"><![CDATA[{"items":{"properties":{"type":{"enum":["ai_introduced_medication","ai_introduced_dosage_change","ai_introduced_directive","other"],"title":"SafetyFlagType","type":"string"},"detail":{"title":"Detail","type":"string"}},"title":"SafetyFlag","type":"object"},"title":"Safety Flags","type":"array","$schema":"http://json-schema.org/draft-07/schema#"}]]></uipath:inputOutput>
+        <uipath:inputOutput id="citations" name="citations" type="jsonSchema" subType="object" elementId="Activity_eoYr7Z"><![CDATA[{"items":{"properties":{"source":{"description":"e.g. 'MHP-VASC-2041 Criterion 3a'.","title":"Source","type":"string"},"snippet":{"type":"string"}},"title":"Citation","type":"object"},"title":"Citations","type":"array","$schema":"http://json-schema.org/draft-07/schema#"}]]></uipath:inputOutput>
+        <uipath:inputOutput id="staffMessage" name="staff_message" type="string" elementId="Process_1" default="Documentation required — please review this prior authorization and provide supporting evidence for the flagged criteria." custom="true" />
+        <uipath:inputOutput id="error3" name="Error" type="jsonSchema" elementId="Activity_Dks9n2"><![CDATA[{"type":"object","properties":{"code":{"type":"string"},"message":{"type":"string"},"detail":{"type":"string"},"category":{"type":"string"},"status":{"type":"number"},"element":{"type":"string"}}}]]></uipath:inputOutput>
+        <uipath:inputOutput id="reviewerComment2" name="reviewer_comment" type="string" elementId="Activity_Dks9n2" />
+        <uipath:inputOutput id="action2" name="Action" type="string" elementId="Activity_Dks9n2" />
+        <uipath:inputOutput id="hitlTask2" name="hitlTask" type="jsonSchema" elementId="Activity_Dks9n2"><![CDATA[{"type":"object","displayName":"All Task Properties","properties":{"Id":{"type":"integer","description":"Task identifier"},"Key":{"type":"string","description":"Unique task identifier (UUID)"},"Title":{"type":"string","description":"Task title"},"Status":{"type":"string","description":"Task status: Unassigned, Pending, or Completed"},"Action":{"type":"string","description":"Action taken on the task"},"ActionLabel":{"type":"string","description":"Action display label"},"Priority":{"type":"string","description":"Task priority: Low, Medium, High, or Critical"},"Type":{"type":"string","description":"Task type (e.g. FormTask, AppTask, QuickFormTask)"},"Data":{"type":"object","description":"Task form field values"},"CompletedByUser":{"type":"object","description":"User who completed the task","properties":{"Id":{"type":"integer"},"Name":{"type":"string"},"Surname":{"type":"string"},"UserName":{"type":"string"},"EmailAddress":{"type":"string"},"DisplayName":{"type":"string"},"Type":{"type":"string","description":"User, Robot, DirectoryUser, DirectoryGroup, DirectoryRobot, or DirectoryExternalApplication"},"AuthenticationSource":{"type":"string"}}},"AssignedToUser":{"type":"object","description":"User currently assigned to the task","properties":{"Id":{"type":"integer"},"Name":{"type":"string"},"Surname":{"type":"string"},"UserName":{"type":"string"},"EmailAddress":{"type":"string"},"DisplayName":{"type":"string"},"Type":{"type":"string","description":"User, Robot, DirectoryUser, DirectoryGroup, DirectoryRobot, or DirectoryExternalApplication"},"AuthenticationSource":{"type":"string"}}},"AssignedToUserId":{"type":"integer","description":"ID of the assigned user"},"TaskAssignmentCriteria":{"type":"string","description":"Assignment criteria: SingleUser, Workload, AllUsers, RoundRobin, or Hierarchy"},"TaskAssignees":{"type":"array","description":"List of users assigned to the task","items":{"type":"object","properties":{"Id":{"type":"integer"},"Name":{"type":"string"},"Surname":{"type":"string"},"UserName":{"type":"string"},"EmailAddress":{"type":"string"},"DisplayName":{"type":"string"},"Type":{"type":"string","description":"User, Robot, DirectoryUser, DirectoryGroup, DirectoryRobot, or DirectoryExternalApplication"},"AuthenticationSource":{"type":"string"}}}},"CompletionTime":{"type":"string","description":"Task completion timestamp"},"CreationTime":{"type":"string","description":"Task creation timestamp"},"LastModificationTime":{"type":"string","description":"Last modification timestamp"},"LastAssignedTime":{"type":"string","description":"Last assignment timestamp"},"OrganizationUnitId":{"type":"integer","description":"Folder/organization unit ID"},"OrganizationUnitFullyQualifiedName":{"type":"string","description":"Fully qualified folder name"},"ParentOperationId":{"type":"string","description":"Operation ID that created this task"},"CreatorJobKey":{"type":"string","description":"Key of the job that created this task (UUID)"},"ExternalTag":{"type":"string","description":"External system identifier"},"ProcessingTime":{"type":"integer","description":"Time spent in assigned state"},"WaitJobState":{"type":"string","description":"State of the waiting job"},"WaitJobKey":{"type":"string","description":"Key of the waiting job (UUID)"},"TaskSchemaKey":{"type":"string","description":"Schema key for QuickFormTask (UUID)"},"IsDeleted":{"type":"boolean"},"IsCurrentUserInAllUserAssignedGroup":{"type":"boolean"},"CreatorUserId":{"type":"integer","description":"ID of the user who created the task"},"LastModifierUserId":{"type":"integer","description":"ID of the last user to modify the task"},"DeleterUserId":{"type":"integer"},"DeletionTime":{"type":"string"},"Tags":{"type":"array","description":"Tags associated to the task","items":{"type":"object","properties":{"Name":{"type":"string"},"DisplayName":{"type":"string"},"Value":{"type":"string"},"DisplayValue":{"type":"string"}}}},"TaskDefinitionPropertiesId":{"type":"integer","description":"Task definition properties ID"},"AppTasksMetadata":{"type":"object","description":"App task metadata","properties":{"Id":{"type":"integer"},"AppId":{"type":"string","description":"Associated App ID"},"AppVersion":{"type":"integer","description":"Associated App version"},"AppProcessKey":{"type":"string","description":"App process key (UUID)"},"FolderKey":{"type":"string","description":"Folder key (UUID)"},"Runtime":{"type":"string","description":"Serverless or Unattended"},"AppType":{"type":"string","description":"Custom or Dynamic"},"CreationTime":{"type":"string"},"CreatorUserId":{"type":"integer"},"CreatorUserKey":{"type":"string","description":"Creator user key (UUID)"}}},"TaskSlaDetails":{"type":"array","description":"Task SLA details","items":{"type":"object","properties":{"ExpiryTime":{"type":"string","description":"SLA expiry timestamp"},"StartCriteria":{"type":"string","description":"TaskCreated, TaskAssigned, or TaskCompleted"},"EndCriteria":{"type":"string","description":"TaskCreated, TaskAssigned, or TaskCompleted"},"Status":{"type":"string","description":"OverdueLater, OverdueSoon, Overdue, or CompletedInTime"}}}},"TaskSource":{"type":"object","description":"Task source information","properties":{"SourceName":{"type":"string","description":"Agent, Workflow, Maestro, CaseManagement, or Default"},"SourceId":{"type":"string"},"JobId":{"type":"string"}}}},"$schema":"http://json-schema.org/draft-07/schema#"}]]></uipath:inputOutput>
+        <uipath:inputOutput id="error2" name="Error" type="jsonSchema" elementId="Activity_grxECw"><![CDATA[{"type":"object","properties":{"code":{"type":"string"},"message":{"type":"string"},"detail":{"type":"string"},"category":{"type":"string"},"status":{"type":"number"},"element":{"type":"string"}}}]]></uipath:inputOutput>
+        <uipath:inputOutput id="reviewerComment" name="reviewer_comment" type="string" elementId="Activity_grxECw" />
+        <uipath:inputOutput id="action" name="Action" type="string" elementId="Activity_grxECw" />
+        <uipath:inputOutput id="hitlTask" name="hitlTask" type="jsonSchema" elementId="Activity_grxECw"><![CDATA[{"type":"object","displayName":"All Task Properties","properties":{"Id":{"type":"integer","description":"Task identifier"},"Key":{"type":"string","description":"Unique task identifier (UUID)"},"Title":{"type":"string","description":"Task title"},"Status":{"type":"string","description":"Task status: Unassigned, Pending, or Completed"},"Action":{"type":"string","description":"Action taken on the task"},"ActionLabel":{"type":"string","description":"Action display label"},"Priority":{"type":"string","description":"Task priority: Low, Medium, High, or Critical"},"Type":{"type":"string","description":"Task type (e.g. FormTask, AppTask, QuickFormTask)"},"Data":{"type":"object","description":"Task form field values"},"CompletedByUser":{"type":"object","description":"User who completed the task","properties":{"Id":{"type":"integer"},"Name":{"type":"string"},"Surname":{"type":"string"},"UserName":{"type":"string"},"EmailAddress":{"type":"string"},"DisplayName":{"type":"string"},"Type":{"type":"string","description":"User, Robot, DirectoryUser, DirectoryGroup, DirectoryRobot, or DirectoryExternalApplication"},"AuthenticationSource":{"type":"string"}}},"AssignedToUser":{"type":"object","description":"User currently assigned to the task","properties":{"Id":{"type":"integer"},"Name":{"type":"string"},"Surname":{"type":"string"},"UserName":{"type":"string"},"EmailAddress":{"type":"string"},"DisplayName":{"type":"string"},"Type":{"type":"string","description":"User, Robot, DirectoryUser, DirectoryGroup, DirectoryRobot, or DirectoryExternalApplication"},"AuthenticationSource":{"type":"string"}}},"AssignedToUserId":{"type":"integer","description":"ID of the assigned user"},"TaskAssignmentCriteria":{"type":"string","description":"Assignment criteria: SingleUser, Workload, AllUsers, RoundRobin, or Hierarchy"},"TaskAssignees":{"type":"array","description":"List of users assigned to the task","items":{"type":"object","properties":{"Id":{"type":"integer"},"Name":{"type":"string"},"Surname":{"type":"string"},"UserName":{"type":"string"},"EmailAddress":{"type":"string"},"DisplayName":{"type":"string"},"Type":{"type":"string","description":"User, Robot, DirectoryUser, DirectoryGroup, DirectoryRobot, or DirectoryExternalApplication"},"AuthenticationSource":{"type":"string"}}}},"CompletionTime":{"type":"string","description":"Task completion timestamp"},"CreationTime":{"type":"string","description":"Task creation timestamp"},"LastModificationTime":{"type":"string","description":"Last modification timestamp"},"LastAssignedTime":{"type":"string","description":"Last assignment timestamp"},"OrganizationUnitId":{"type":"integer","description":"Folder/organization unit ID"},"OrganizationUnitFullyQualifiedName":{"type":"string","description":"Fully qualified folder name"},"ParentOperationId":{"type":"string","description":"Operation ID that created this task"},"CreatorJobKey":{"type":"string","description":"Key of the job that created this task (UUID)"},"ExternalTag":{"type":"string","description":"External system identifier"},"ProcessingTime":{"type":"integer","description":"Time spent in assigned state"},"WaitJobState":{"type":"string","description":"State of the waiting job"},"WaitJobKey":{"type":"string","description":"Key of the waiting job (UUID)"},"TaskSchemaKey":{"type":"string","description":"Schema key for QuickFormTask (UUID)"},"IsDeleted":{"type":"boolean"},"IsCurrentUserInAllUserAssignedGroup":{"type":"boolean"},"CreatorUserId":{"type":"integer","description":"ID of the user who created the task"},"LastModifierUserId":{"type":"integer","description":"ID of the last user to modify the task"},"DeleterUserId":{"type":"integer"},"DeletionTime":{"type":"string"},"Tags":{"type":"array","description":"Tags associated to the task","items":{"type":"object","properties":{"Name":{"type":"string"},"DisplayName":{"type":"string"},"Value":{"type":"string"},"DisplayValue":{"type":"string"}}}},"TaskDefinitionPropertiesId":{"type":"integer","description":"Task definition properties ID"},"AppTasksMetadata":{"type":"object","description":"App task metadata","properties":{"Id":{"type":"integer"},"AppId":{"type":"string","description":"Associated App ID"},"AppVersion":{"type":"integer","description":"Associated App version"},"AppProcessKey":{"type":"string","description":"App process key (UUID)"},"FolderKey":{"type":"string","description":"Folder key (UUID)"},"Runtime":{"type":"string","description":"Serverless or Unattended"},"AppType":{"type":"string","description":"Custom or Dynamic"},"CreationTime":{"type":"string"},"CreatorUserId":{"type":"integer"},"CreatorUserKey":{"type":"string","description":"Creator user key (UUID)"}}},"TaskSlaDetails":{"type":"array","description":"Task SLA details","items":{"type":"object","properties":{"ExpiryTime":{"type":"string","description":"SLA expiry timestamp"},"StartCriteria":{"type":"string","description":"TaskCreated, TaskAssigned, or TaskCompleted"},"EndCriteria":{"type":"string","description":"TaskCreated, TaskAssigned, or TaskCompleted"},"Status":{"type":"string","description":"OverdueLater, OverdueSoon, Overdue, or CompletedInTime"}}}},"TaskSource":{"type":"object","description":"Task source information","properties":{"SourceName":{"type":"string","description":"Agent, Workflow, Maestro, CaseManagement, or Default"},"SourceId":{"type":"string"},"JobId":{"type":"string"}}}},"$schema":"http://json-schema.org/draft-07/schema#"}]]></uipath:inputOutput>
+      </uipath:variables>
+      <uipath:bindings version="v1">
+        <uipath:binding id="b1kMlTbjN" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="Agent" propertyAttribute="folderPath" />
+        <uipath:binding id="bwnhkHOQv" name="name" type="string" default="Agent" resource="process" resourceSubType="Agent" resourceKey="Agent" propertyAttribute="name" />
+        <uipath:binding id="blrULW58L" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="Agent 1" propertyAttribute="folderPath" />
+        <uipath:binding id="btpylkZ3S" name="name" type="string" default="Agent 1" resource="process" resourceSubType="Agent" resourceKey="Agent 1" propertyAttribute="name" />
+        <uipath:binding id="by4cF7CHD" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="Agent 2" propertyAttribute="folderPath" />
+        <uipath:binding id="bbmvkUjdj" name="name" type="string" default="Agent 2" resource="process" resourceSubType="Agent" resourceKey="Agent 2" propertyAttribute="name" />
+        <uipath:binding id="bvVzckUCh" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="Agent 3" propertyAttribute="folderPath" />
+        <uipath:binding id="bxmG7dLDx" name="name" type="string" default="Agent 3" resource="process" resourceSubType="Agent" resourceKey="Agent 3" propertyAttribute="name" />
+        <uipath:binding id="b2MfqjxHs" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="Agent 4" propertyAttribute="folderPath" />
+        <uipath:binding id="breDizqYE" name="name" type="string" default="Agent 4" resource="process" resourceSubType="Agent" resourceKey="Agent 4" propertyAttribute="name" />
+        <uipath:binding id="bKFEXDAqR" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="Agent 5" propertyAttribute="folderPath" />
+        <uipath:binding id="bbLeRRRzE" name="name" type="string" default="Agent 5" resource="process" resourceSubType="Agent" resourceKey="Agent 5" propertyAttribute="name" />
+        <uipath:binding id="brIkBoefh" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="Agent" propertyAttribute="folderPath" />
+        <uipath:binding id="bhmpqKN06" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="Agent 6" propertyAttribute="folderPath" />
+        <uipath:binding id="bnecEuekJ" name="name" type="string" default="Agent 6" resource="process" resourceSubType="Agent" resourceKey="Agent 6" propertyAttribute="name" />
+        <uipath:binding id="bczUyNEio" name="folderPath" type="string" default="divinee@athenaindex.com&#39;s workspace" resource="process" resourceKey="divinee@athenaindex.com&#39;s workspace.criteriamatch" propertyAttribute="folderPath" />
+        <uipath:binding id="blo6kPlkY" name="name" type="string" default="criteriamatch" resource="process" resourceKey="divinee@athenaindex.com&#39;s workspace.criteriamatch" propertyAttribute="name" />
+        <uipath:binding id="b6P05yUaS" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="criteriamatch" propertyAttribute="folderPath" />
+        <uipath:binding id="bRVISHPb7" name="name" type="string" default="criteriamatch" resource="process" resourceSubType="Agent" resourceKey="criteriamatch" propertyAttribute="name" />
+        <uipath:binding id="bVX2SoXUs" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="criteriamatch" propertyAttribute="folderPath" />
+        <uipath:binding id="b5jA9mdC3" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="criteriamatch" propertyAttribute="folderPath" />
+        <uipath:binding id="bLlF00vG1" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="criteriamatch" propertyAttribute="folderPath" />
+        <uipath:binding id="baTFSbn6T" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="Agent 7" propertyAttribute="folderPath" />
+        <uipath:binding id="bXHAYO4oN" name="name" type="string" default="Agent 7" resource="process" resourceSubType="Agent" resourceKey="Agent 7" propertyAttribute="name" />
+        <uipath:binding id="bMuat5IVB" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="criteriamatch" propertyAttribute="folderPath" />
+        <uipath:binding id="b50OrSrzf" name="folderPath" type="string" resource="app" resourceKey="SimpleApproval" propertyAttribute="folderPath" />
+        <uipath:binding id="bZFggo9F8" name="name" type="string" default="SimpleApproval" resource="app" resourceKey="SimpleApproval" propertyAttribute="name" />
+      </uipath:bindings>
+      <uipath:migrationVersion version="15" />
+      <uipath:intsvcActivityConfig version="v2" />
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="Event_start" name="Start event">
+      <bpmn:extensionElements>
+        <uipath:entryPointId value="6cea870a-f10c-4ab1-9994-04a6dd927973" />
+      </bpmn:extensionElements>
+      <bpmn:outgoing>edge_Event_start-Activity_Oi7zxX</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_Oi7zxX" name="Ingest request">
+      <bpmn:incoming>edge_Event_start-Activity_Oi7zxX</bpmn:incoming>
+      <bpmn:outgoing>edge_Activity_Oi7zxX-Activity_ylgCjh</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_ylgCjh" name="Extract fields">
+      <bpmn:incoming>edge_Activity_Oi7zxX-Activity_ylgCjh</bpmn:incoming>
+      <bpmn:outgoing>edge_Activity_ylgCjh-Activity_wcyl1E</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_wcyl1E" name="Triage">
+      <bpmn:incoming>edge_Activity_ylgCjh-Activity_wcyl1E</bpmn:incoming>
+      <bpmn:outgoing>edge_Activity_wcyl1E-Activity_eoYr7Z9lgQyx</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_ZErhk2" name="Route by branch">
+      <bpmn:incoming>edge_Activity_eoYr7Z-Gateway_ZErhk2nVmWsC</bpmn:incoming>
+      <bpmn:outgoing>edge_Gateway_ZErhk2-Activity_3IaDSU</bpmn:outgoing>
+      <bpmn:outgoing>edge_Gateway_ZErhk2-Activity_grxECw</bpmn:outgoing>
+      <bpmn:outgoing>edge_DMHZ4C</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Activity_3IaDSU" name="Generate packet">
+      <bpmn:incoming>edge_Gateway_ZErhk2-Activity_3IaDSU</bpmn:incoming>
+      <bpmn:outgoing>edge_Activity_3IaDSU-Activity_MecFmK</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_MecFmK" name="Submit to payer">
+      <bpmn:incoming>edge_Activity_3IaDSU-Activity_MecFmK</bpmn:incoming>
+      <bpmn:outgoing>edge_ESQgpi</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_uBO6I1">
+      <bpmn:incoming>edge_ESQgpi</bpmn:incoming>
+      <bpmn:incoming>edge_5B2yIz</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_eoYr7Z" name="criteriamatch">
+      <bpmn:extensionElements>
+        <uipath:activity version="v1">
+          <uipath:type value="Orchestrator.StartAgentJob" version="v2" />
+          <uipath:context>
+            <uipath:input name="name" type="string" value="=bindings.bRVISHPb7" />
+            <uipath:input name="folderPath" type="string" value="=bindings.bMuat5IVB" />
+            <uipath:input name="_label" type="string" value="criteriamatch" />
+            <uipath:inputSchema type="jsonSchema"><![CDATA[{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"request_id":{"type":"string"},"payer":{"type":"string"},"policy_id":{"type":"string"},"service_requested":{"type":"string"},"clinical_record":{"type":"string"},"policy_text":{"type":"string"},"therapeutic_area":{"type":"string"}},"required":["request_id","payer","policy_id","service_requested","clinical_record","policy_text"]}]]></uipath:inputSchema>
+          </uipath:context>
+          <uipath:input name="JobArguments" type="json" target="bodyField"><![CDATA[{"request_id":"=vars.requestId","payer":"=vars.payerVar","policy_id":"=vars.policyIdVar","service_requested":"=vars.serviceRequestedVar","clinical_record":"=vars.clinicalRecordVar","policy_text":"=vars.policyNote","therapeutic_area":"=vars.therapeuticAreaVar"}]]></uipath:input>
+          <uipath:output name="Error" type="jsonSchema" source="=Error" var="error" />
+          <uipath:output name="request_id" type="string" source="=request_id" var="requestId2" />
+          <uipath:output name="payer" type="string" source="=payer" var="payer" />
+          <uipath:output name="policy_id" type="string" source="=policy_id" var="policyId" />
+          <uipath:output name="service_requested" type="string" source="=service_requested" var="serviceRequested" />
+          <uipath:output name="therapeutic_area" type="string" source="=therapeutic_area" var="therapeuticArea" />
+          <uipath:output name="criteria" type="jsonSchema" subType="object" source="=criteria" var="criteria" />
+          <uipath:output name="missing_documentation" type="jsonSchema" subType="object" source="=missing_documentation" var="missingDocumentation" />
+          <uipath:output name="overall_determination" type="string" source="=overall_determination" var="overallDetermination" />
+          <uipath:output name="routing" type="jsonSchema" source="=routing" var="routing" />
+          <uipath:output name="confidence" type="number" source="=confidence" var="confidence" />
+          <uipath:output name="safety_flags" type="jsonSchema" subType="object" source="=safety_flags" var="safetyFlags" />
+          <uipath:output name="citations" type="jsonSchema" subType="object" source="=citations" var="citations" />
+        </uipath:activity>
+      </bpmn:extensionElements>
+      <bpmn:incoming>edge_Activity_wcyl1E-Activity_eoYr7Z9lgQyx</bpmn:incoming>
+      <bpmn:incoming>edge_26bKAL</bpmn:incoming>
+      <bpmn:outgoing>edge_Activity_eoYr7Z-Gateway_ZErhk2nVmWsC</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_grxECw" name="Request missing documentation">
+      <bpmn:extensionElements>
+        <uipath:activity version="v1">
+          <uipath:type value="Actions.HITL" version="v2" />
+          <uipath:context>
+            <uipath:input name="name" type="string" value="=bindings.bZFggo9F8" />
+            <uipath:input name="folderPath" type="string" value="=bindings.b50OrSrzf" />
+            <uipath:input name="_label" type="string" value="SimpleApproval" />
+            <uipath:input name="taskTitle" type="string" value="Documentation required for prior authorization" required="true" />
+            <uipath:input name="assignmentCriteria" type="string" value="SingleUser" />
+            <uipath:input name="recipient" type="json" />
+            <uipath:input name="customAssignees" type="string" />
+            <uipath:input name="priority" type="string" value="Medium" />
+            <uipath:input name="labels" type="string" />
+            <uipath:input name="actionCatalogName" type="string" />
+            <uipath:input name="enableActionableNotifications" type="boolean" value="false" />
+            <uipath:inputSchema type="jsonSchema"><![CDATA[{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"request_details":{"type":"string"}},"required":[]}]]></uipath:inputSchema>
+          </uipath:context>
+          <uipath:input name="HitlTaskArguments" type="json" target="bodyField"><![CDATA[{"request_details":"=vars.staffMessage"}]]></uipath:input>
+          <uipath:output name="Error" type="jsonSchema" source="=Error" var="error2" />
+          <uipath:output name="reviewer_comment" type="string" source="=reviewer_comment" var="reviewerComment" />
+          <uipath:output name="Action" type="string" source="=Action" var="action" options="[{&#34;value&#34;:&#34;Approve&#34;,&#34;label&#34;:&#34;Approve&#34;},{&#34;value&#34;:&#34;Reject&#34;,&#34;label&#34;:&#34;Reject&#34;}]" />
+          <uipath:output name="hitlTask" type="jsonSchema" source="=hitlTask" var="hitlTask" />
+          <uipath:output name="clinical_record_var" type="string" source="65F, retired, active gardener. Left calf tightness when walking, interfering with gardening and daily walks for several months. No rest pain, no wounds. Left ABI 0.68. Duplex: left SFA stenosis ~60%, single-vessel runoff preserved; lesion amenable to endovascular treatment. Aspirin 81mg daily and rosuvastatin 20mg daily. Lifelong non-smoker. DOCUMENTATION UPDATE: Completed a 14-week supervised exercise therapy program (vascular rehab, 3x/week) with persistent lifestyle-limiting symptoms despite the program; remains unable to perform usual gardening and daily walks. Request prior authorization for left SFA angioplasty +/- stent." var="clinicalRecordVar" custom="true" target="" />
+        </uipath:activity>
+      </bpmn:extensionElements>
+      <bpmn:incoming>edge_Gateway_ZErhk2-Activity_grxECw</bpmn:incoming>
+      <bpmn:outgoing>edge_26bKAL</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_Dks9n2" name="Medical Director review">
+      <bpmn:extensionElements>
+        <uipath:activity version="v1">
+          <uipath:type value="Actions.HITL" version="v2" />
+          <uipath:context>
+            <uipath:input name="name" type="string" value="=bindings.bZFggo9F8" />
+            <uipath:input name="folderPath" type="string" value="=bindings.b50OrSrzf" />
+            <uipath:input name="_label" type="string" value="SimpleApproval" />
+            <uipath:input name="taskTitle" type="string" value="Medical Director review — guideline-discordant request" required="true" />
+            <uipath:input name="assignmentCriteria" type="string" value="SingleUser" />
+            <uipath:input name="recipient" type="json"><![CDATA[{"Type":2,"Value":"divinee@athenaindex.com"}]]></uipath:input>
+            <uipath:input name="customAssignees" type="string" />
+            <uipath:input name="priority" type="string" value="Medium" />
+            <uipath:input name="labels" type="string" />
+            <uipath:input name="actionCatalogName" type="string" />
+            <uipath:input name="enableActionableNotifications" type="boolean" value="false" />
+            <uipath:inputSchema type="jsonSchema"><![CDATA[{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"request_details":{"type":"string"}},"required":[]}]]></uipath:inputSchema>
+          </uipath:context>
+          <uipath:input name="HitlTaskArguments" type="json" target="bodyField"><![CDATA[{"request_details":"=vars.staffMessage"}]]></uipath:input>
+          <uipath:output name="Error" type="jsonSchema" source="=Error" var="error3" />
+          <uipath:output name="reviewer_comment" type="string" source="=reviewer_comment" var="reviewerComment2" />
+          <uipath:output name="Action" type="string" source="=Action" var="action2" options="[{&#34;value&#34;:&#34;Approve&#34;,&#34;label&#34;:&#34;Approve&#34;},{&#34;value&#34;:&#34;Reject&#34;,&#34;label&#34;:&#34;Reject&#34;}]" />
+          <uipath:output name="hitlTask" type="jsonSchema" source="=hitlTask" var="hitlTask2" />
+        </uipath:activity>
+        <uipath:errorMapping version="v1">
+          <uipath:error id="ErrorMapping_QeoRpI" errorRef="" priority="1" condition="=vars.routing.branch == &#34;escalate&#34;" detail="" retryable="false" />
+        </uipath:errorMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>edge_DMHZ4C</bpmn:incoming>
+      <bpmn:outgoing>edge_5B2yIz</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="edge_Event_start-Activity_Oi7zxX" sourceRef="Event_start" targetRef="Activity_Oi7zxX" />
+    <bpmn:sequenceFlow id="edge_Activity_Oi7zxX-Activity_ylgCjh" sourceRef="Activity_Oi7zxX" targetRef="Activity_ylgCjh" />
+    <bpmn:sequenceFlow id="edge_Activity_ylgCjh-Activity_wcyl1E" sourceRef="Activity_ylgCjh" targetRef="Activity_wcyl1E" />
+    <bpmn:sequenceFlow id="edge_Gateway_ZErhk2-Activity_3IaDSU" sourceRef="Gateway_ZErhk2" targetRef="Activity_3IaDSU">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=vars.routing.branch == "ready"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="edge_Activity_3IaDSU-Activity_MecFmK" sourceRef="Activity_3IaDSU" targetRef="Activity_MecFmK" />
+    <bpmn:sequenceFlow id="edge_ESQgpi" sourceRef="Activity_MecFmK" targetRef="Event_uBO6I1" />
+    <bpmn:sequenceFlow id="edge_Activity_wcyl1E-Activity_eoYr7Z9lgQyx" sourceRef="Activity_wcyl1E" targetRef="Activity_eoYr7Z" />
+    <bpmn:sequenceFlow id="edge_Activity_eoYr7Z-Gateway_ZErhk2nVmWsC" sourceRef="Activity_eoYr7Z" targetRef="Gateway_ZErhk2" />
+    <bpmn:sequenceFlow id="edge_Gateway_ZErhk2-Activity_grxECw" sourceRef="Gateway_ZErhk2" targetRef="Activity_grxECw">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=vars.routing.branch == "missing_docs"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="edge_26bKAL" sourceRef="Activity_grxECw" targetRef="Activity_eoYr7Z" />
+    <bpmn:sequenceFlow id="edge_DMHZ4C" sourceRef="Gateway_ZErhk2" targetRef="Activity_Dks9n2">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=vars.routing.branch == "escalate"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="edge_5B2yIz" sourceRef="Activity_Dks9n2" targetRef="Event_uBO6I1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="S_Event_start" bpmnElement="Event_start">
+        <dc:Bounds x="252" y="575" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="252" y="616" width="36" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_Oi7zxX" bpmnElement="Activity_Oi7zxX">
+        <dc:Bounds x="338" y="553" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="338" y="638" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_ylgCjh" bpmnElement="Activity_ylgCjh">
+        <dc:Bounds x="488" y="553" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="488" y="638" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_wcyl1E" bpmnElement="Activity_wcyl1E">
+        <dc:Bounds x="638" y="553" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="638" y="638" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Gateway_ZErhk2" bpmnElement="Gateway_ZErhk2">
+        <dc:Bounds x="538" y="222" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="538" y="277" width="50" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_3IaDSU" bpmnElement="Activity_3IaDSU">
+        <dc:Bounds x="638" y="322" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="638" y="407" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_MecFmK" bpmnElement="Activity_MecFmK">
+        <dc:Bounds x="788" y="322" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="788" y="407" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Event_uBO6I1" bpmnElement="Event_uBO6I1">
+        <dc:Bounds x="938" y="220" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="938" y="261" width="36" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_eoYr7Z" bpmnElement="Activity_eoYr7Z">
+        <dc:Bounds x="788" y="502" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="788" y="587" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_grxECw" bpmnElement="Activity_grxECw">
+        <dc:Bounds x="638" y="452" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="638" y="537" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_Dks9n2" bpmnElement="Activity_Dks9n2">
+        <dc:Bounds x="788" y="192" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="788" y="277" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_Event_start-Activity_Oi7zxX" bpmnElement="edge_Event_start-Activity_Oi7zxX">
+        <di:waypoint x="288" y="593" />
+        <di:waypoint x="338" y="593" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_Activity_Oi7zxX-Activity_ylgCjh" bpmnElement="edge_Activity_Oi7zxX-Activity_ylgCjh">
+        <di:waypoint x="438" y="593" />
+        <di:waypoint x="488" y="593" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_Activity_ylgCjh-Activity_wcyl1E" bpmnElement="edge_Activity_ylgCjh-Activity_wcyl1E">
+        <di:waypoint x="588" y="593" />
+        <di:waypoint x="638" y="593" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_Gateway_ZErhk2-Activity_3IaDSU" bpmnElement="edge_Gateway_ZErhk2-Activity_3IaDSU">
+        <di:waypoint x="588" y="247" />
+        <di:waypoint x="613" y="247" />
+        <di:waypoint x="613" y="362" />
+        <di:waypoint x="638" y="362" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_Activity_3IaDSU-Activity_MecFmK" bpmnElement="edge_Activity_3IaDSU-Activity_MecFmK">
+        <di:waypoint x="738" y="362" />
+        <di:waypoint x="788" y="362" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_ESQgpi" bpmnElement="edge_ESQgpi">
+        <di:waypoint x="888" y="362" />
+        <di:waypoint x="913" y="362" />
+        <di:waypoint x="913" y="238" />
+        <di:waypoint x="938" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_Activity_wcyl1E-Activity_eoYr7Z9lgQyx" bpmnElement="edge_Activity_wcyl1E-Activity_eoYr7Z9lgQyx">
+        <di:waypoint x="738" y="593" />
+        <di:waypoint x="763" y="593" />
+        <di:waypoint x="763" y="542" />
+        <di:waypoint x="788" y="542" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_Activity_eoYr7Z-Gateway_ZErhk2nVmWsC" bpmnElement="edge_Activity_eoYr7Z-Gateway_ZErhk2nVmWsC">
+        <di:waypoint x="888" y="542" />
+        <di:waypoint x="908" y="542" />
+        <di:waypoint x="908" y="394.5" />
+        <di:waypoint x="518" y="394.5" />
+        <di:waypoint x="518" y="247" />
+        <di:waypoint x="538" y="247" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_Gateway_ZErhk2-Activity_grxECw" bpmnElement="edge_Gateway_ZErhk2-Activity_grxECw">
+        <di:waypoint x="588" y="247" />
+        <di:waypoint x="613" y="247" />
+        <di:waypoint x="613" y="492" />
+        <di:waypoint x="638" y="492" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_26bKAL" bpmnElement="edge_26bKAL">
+        <di:waypoint x="738" y="492" />
+        <di:waypoint x="763" y="492" />
+        <di:waypoint x="763" y="542" />
+        <di:waypoint x="788" y="542" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_DMHZ4C" bpmnElement="edge_DMHZ4C">
+        <di:waypoint x="588" y="247" />
+        <di:waypoint x="688" y="247" />
+        <di:waypoint x="688" y="232" />
+        <di:waypoint x="788" y="232" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_5B2yIz" bpmnElement="edge_5B2yIz">
+        <di:waypoint x="888" y="232" />
+        <di:waypoint x="913" y="232" />
+        <di:waypoint x="913" y="238" />
+        <di:waypoint x="938" y="238" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

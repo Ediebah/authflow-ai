@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://authflow.ai/schemas/criteriamatch_output.schema.json",
+  "title": "CriteriaMatch Agent Output",
+  "description": "Structured output of the CriteriaMatch agent. The orchestration contract between the Clinica AI intelligence layer and the UiPath Maestro BPMN gateway. The Maestro decision gateway switches on routing.branch. Keep this schema STABLE; changing it changes the gateway wiring.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "description": "Correlation ID for this authorization request (carried as a Maestro process variable)."
+    },
+    "payer": { "type": "string", "description": "Payer name, e.g. 'Meridian Health Plan'." },
+    "policy_id": { "type": "string", "description": "Coverage policy ID evaluated against, e.g. 'MHP-VASC-2041'." },
+    "service_requested": { "type": "string", "description": "Requested service, e.g. 'SFA angioplasty with stent'." },
+    "therapeutic_area": {
+      "type": "string",
+      "description": "Specialty/domain. Demonstrates generalization across scenarios.",
+      "examples": ["peripheral_arterial_disease", "ra_biologics"]
+    },
+    "criteria": {
+      "type": "array",
+      "description": "One entry per policy criterion, in policy order.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "criterion_id": { "type": "string", "description": "Stable ID, e.g. 'C1', 'C3a'." },
+          "description": { "type": "string", "description": "Plain-language restatement of the criterion." },
+          "status": {
+            "type": "string",
+            "enum": ["met", "not_met", "missing", "uncertain"],
+            "description": "met = clearly satisfied; not_met = clearly contradicted; missing = required evidence absent; uncertain = evidence present but ambiguous/insufficient to decide."
+          },
+          "evidence": {
+            "type": ["string", "null"],
+            "description": "Quote or paraphrase of the chart text supporting the status. Null if none found."
+          },
+          "evidence_source": {
+            "type": ["string", "null"],
+            "description": "Where in the record the evidence came from (note section, document, line)."
+          },
+          "rationale": { "type": "string", "description": "Why this status was assigned." },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "needed_if_gap": {
+            "type": ["string", "null"],
+            "description": "If status is 'missing' or 'uncertain', the documentation needed to resolve it, phrased for clinic staff. Null otherwise."
+          }
+        },
+        "required": ["criterion_id", "description", "status", "rationale", "confidence"]
+      }
+    },
+    "missing_documentation": {
+      "type": "array",
+      "description": "Actionable items for the missing-docs staff task. Each becomes a line in the Action Center form.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "criterion_id": { "type": "string" },
+          "needed": { "type": "string", "description": "What documentation is needed, phrased for clinic staff." },
+          "blocking": { "type": "boolean", "description": "True if submission cannot proceed without it." }
+        },
+        "required": ["criterion_id", "needed", "blocking"]
+      }
+    },
+    "overall_determination": {
+      "type": "string",
+      "enum": ["ready_for_submission", "missing_documentation", "escalate"],
+      "description": "Aggregate result. NEVER 'approved'/'denied' — the agent does not make the clinical decision."
+    },
+    "routing": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The field the Maestro BPMN gateway switches on.",
+      "properties": {
+        "branch": {
+          "type": "string",
+          "enum": ["ready", "missing_docs", "escalate"],
+          "description": "ready -> Auth Packet Agent + submit; missing_docs -> staff User task (suspend/resume); escalate -> Medical Director User task."
+        },
+        "reason": { "type": "string", "description": "One-line human-readable reason for the routing." }
+      },
+      "required": ["branch", "reason"]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Overall confidence in the determination. Low confidence on a 'ready' result should bias toward human review."
+    },
+    "safety_flags": {
+      "type": "array",
+      "description": "Outputs of the safety filter. Populated if generated text introduced any medication/dosage/clinical change not present in the input.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["ai_introduced_medication", "ai_introduced_dosage_change", "ai_introduced_directive", "other"]
+          },
+          "detail": { "type": "string" }
+        },
+        "required": ["type", "detail"]
+      }
+    },
+    "citations": {
+      "type": "array",
+      "description": "Policy/guideline references supporting the determination.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source": { "type": "string", "description": "e.g. 'MHP-VASC-2041 Criterion 3a'." },
+          "snippet": { "type": "string", "description": "Short supporting excerpt (paraphrased)." }
+        },
+        "required": ["source"]
+      }
+    }
+  },
+  "required": [
+    "request_id",
+    "payer",
+    "policy_id",
+    "service_requested",
+    "criteria",
+    "overall_determination",
+    "routing",
+    "confidence"
+  ]
+}
