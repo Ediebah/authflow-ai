@@ -4,6 +4,7 @@
 
 UiPath AgentHack 2026 · Track 2 (Maestro BPMN)
 
+**Agent Type:** Coded Agent (CriteriaMatch, built with LangChain via `uipath-langchain`, run natively on UiPath). The solution does not use low-code agents
 ---
 
 ## 1. Overview
@@ -52,13 +53,19 @@ Start → Ingest → Extract → Triage → CriteriaMatch (AI agent) → Route b
 
 ## 3. Tech stack
 
-- **UiPath Maestro (BPMN 2.0)** — process orchestration, the gateway, and the suspend/resume human tasks
-- **UiPath Action Center** — human-in-the-loop tasks (documentation request, Medical Director review)
-- **UiPath coded agent** (`uipath-langchain`) — the CriteriaMatch agent, published to the tenant and invoked by the process
-- **LangChain / LangGraph** — the agent framework
-- **UiPath LLM Gateway** — model access with no external API key (model: `gpt-4.1-mini`)
-- **Python 3.11**, Pydantic schemas for structured agent output
-- Runs on **UiPath Automation Cloud**
+UiPath components: Maestro (BPMN 2.0), Action Center, Coded Agents (uipath-langchain), LLM Gateway, Orchestrator. Runs on UiPath Automation Cloud.
+
+External / supporting: LangChain / LangGraph (agent framework), Python 3.11, Pydantic (structured agent output schemas).
+
+Component-by-component:
+
+- UiPath Maestro (BPMN 2.0) — process orchestration, the gateway, and the suspend/resume human tasks
+- UiPath Action Center — human-in-the-loop tasks (documentation request, Medical Director review)
+- UiPath Coded Agent (uipath-langchain) — the CriteriaMatch agent, published to the tenant and invoked by the process
+- UiPath LLM Gateway — model access with no external API key (model: gpt-4.1-mini)
+- UiPath Orchestrator — hosts the published agent (Tenant Processes Feed)
+- LangChain / LangGraph — the agent framework
+- Python 3.11, Pydantic schemas for structured agent output
 
 ## 4. Repository structure & how to run
 
