@@ -4,7 +4,8 @@
 
 UiPath AgentHack 2026 · Track 2 (Maestro BPMN)
 
-**Agent Type:** Coded Agent (CriteriaMatch, built with LangChain via `uipath-langchain`, run natively on UiPath). The solution does not use low-code agents
+**Agent Type:** Coded Agent (CriteriaMatch, built with LangChain via `uipath-langchain`, run natively on UiPath). The solution does not use low-code agents.
+
 ---
 
 ## 1. Overview
@@ -19,26 +20,24 @@ The headline scenario is elective peripheral arterial stenting for intermittent 
 
 ## 2. How it works (architecture)
 
-
 ![AuthFlow architecture](docs/architecture.png)
-
 
 AuthFlow is a UiPath Maestro **BPMN 2.0** process that orchestrates an AI agent, a decision gateway, and human tasks.
 
 ```
-Start → Ingest → Extract → Triage → CriteriaMatch (AI agent) → Route by branch (gateway)
-                                                                      │
-                          ┌───────────────────────────────────────────┼───────────────────────────────────────┐
-                          ▼                                            ▼                                       ▼
-                   branch = "ready"                           branch = "missing_docs"                  branch = "escalate"
-                          │                                            │                                       │
-                  Generate packet                          Human task (Action Center):              Human task (Action Center):
-                          │                                "Documentation required"                 "Medical Director review"
-                    Submit to payer                                    │                                       │
-                          │                              staff completes → record updated            clinician decides
-                         End                                           │                                       │
-                                                          loops back to CriteriaMatch                         End
-                                                          (re-evaluates → ready) → End
+Start -> Ingest -> Extract -> Triage -> CriteriaMatch (AI agent) -> Route by branch (gateway)
+                                                                      |
+                          +-------------------------------------------+---------------------------------------+
+                          v                                           v                                       v
+                   branch = "ready"                          branch = "missing_docs"                 branch = "escalate"
+                          |                                           |                                       |
+                  Generate packet                         Human task (Action Center):             Human task (Action Center):
+                          |                               "Documentation required"                "Medical Director review"
+                    Submit to payer                                   |                                       |
+                          |                             staff completes -> record updated          clinician decides
+                         End                                          |                                       |
+                                                         loops back to CriteriaMatch                        End
+                                                         (re-evaluates -> ready) -> End
 ```
 
 **The CriteriaMatch agent.** A LangChain coded agent running natively inside UiPath. It judges each policy criterion as `met`, `not_met`, `missing`, or `uncertain`, with evidence, rationale, confidence, and a citation to the policy text. A deterministic routing layer (not the LLM) then maps those judgments to a branch, so the routing decision is auditable and reproducible rather than left to the model. Inapplicable criteria (for example, smoking-cessation counseling for a lifelong non-smoker) are handled explicitly so they do not trigger false escalations.
@@ -53,19 +52,19 @@ Start → Ingest → Extract → Triage → CriteriaMatch (AI agent) → Route b
 
 ## 3. Tech stack
 
-UiPath components: Maestro (BPMN 2.0), Action Center, Coded Agents (uipath-langchain), LLM Gateway, Orchestrator. Runs on UiPath Automation Cloud.
+**UiPath components:** Maestro (BPMN 2.0), Action Center, Coded Agents (`uipath-langchain`), LLM Gateway, Orchestrator. Runs on UiPath Automation Cloud.
 
-External / supporting: LangChain / LangGraph (agent framework), Python 3.11, Pydantic (structured agent output schemas).
+**External / supporting:** LangChain / LangGraph (agent framework), Python 3.11, Pydantic (structured agent output schemas).
 
 Component-by-component:
 
-- UiPath Maestro (BPMN 2.0) — process orchestration, the gateway, and the suspend/resume human tasks
-- UiPath Action Center — human-in-the-loop tasks (documentation request, Medical Director review)
-- UiPath Coded Agent (uipath-langchain) — the CriteriaMatch agent, published to the tenant and invoked by the process
-- UiPath LLM Gateway — model access with no external API key (model: gpt-4.1-mini)
-- UiPath Orchestrator — hosts the published agent (Tenant Processes Feed)
-- LangChain / LangGraph — the agent framework
-- Python 3.11, Pydantic schemas for structured agent output
+- **UiPath Maestro (BPMN 2.0)** — process orchestration, the gateway, and the suspend/resume human tasks
+- **UiPath Action Center** — human-in-the-loop tasks (documentation request, Medical Director review)
+- **UiPath Coded Agent** (`uipath-langchain`) — the CriteriaMatch agent, published to the tenant and invoked by the process
+- **UiPath LLM Gateway** — model access with no external API key (model: `gpt-4.1-mini`)
+- **UiPath Orchestrator** — hosts the published agent (Tenant Processes Feed)
+- **LangChain / LangGraph** — the agent framework
+- **Python 3.11**, Pydantic schemas for structured agent output
 
 ## 4. Repository structure & how to run
 
@@ -94,14 +93,14 @@ python -m criteriamatch.eval        # runs the three synthetic cases through the
 
 ```bash
 cd criteriamatch-agent
-uipath auth --staging
-uipath run agent --file input_case2.json    # runs against the UiPath LLM Gateway, no API key
+uv run uipath auth --staging
+uv run uipath run agent --file input_case2.json    # runs against the UiPath LLM Gateway, no API key
 ```
 
 **Deploy & orchestrate:**
 
-1. `uipath pack` and `uipath publish` the agent to the **Orchestrator Tenant Processes Feed** (not personal workspace, so the Maestro process can resolve it at runtime).
-2. Enable the **Actions** service on the tenant (Admin → Tenant → Add Services) and assign an Action Center license, required for the human tasks.
+1. `uv run uipath pack` and `uv run uipath publish` the agent to the **Orchestrator Tenant Processes Feed** (not personal workspace, so the Maestro process can resolve it at runtime).
+2. Enable the **Actions** service on the tenant (Admin -> Tenant -> Add Services) and assign an Action Center license, required for the human tasks.
 3. Open the Maestro process in `uipath/`, confirm the agent binding and the gateway conditions (`vars.routing.branch == "ready" | "missing_docs" | "escalate"`), and run.
 
 ## 5. Demo & results
@@ -110,13 +109,13 @@ All three branches were validated end to end on UiPath Automation Cloud. Executi
 
 | Case | Clinical picture | Routed to | Outcome |
 |------|------------------|-----------|---------|
-| **Case 1** | Completed supervised exercise program, optimal medical therapy, qualifying disease | `ready` | Auto-approved → packet → submit → End |
-| **Case 2** | Ambiguous conservative-therapy documentation | `missing_docs` | **Suspended → staff completes Action Center task → resumed → re-evaluated → approved → End** |
-| **Case 3** | Mild disease, recreational goal, no therapy, active smoker | `escalate` | Medical Director review task → clinician decides → End |
+| **Case 1** | Completed supervised exercise program, optimal medical therapy, qualifying disease | `ready` | Auto-approved -> packet -> submit -> End |
+| **Case 2** | Ambiguous conservative-therapy documentation | `missing_docs` | **Suspended -> staff completes Action Center task -> resumed -> re-evaluated -> approved -> End** |
+| **Case 3** | Mild disease, recreational goal, no therapy, active smoker | `escalate` | Medical Director review task -> clinician decides -> End |
 
 **Case 2 is the centerpiece:** the agent flags the gap, the process pauses, a human supplies the documentation through Action Center, and the process resumes and approves on re-evaluation. This is "handles complexity, survives interruptions, keeps humans in the loop" running for real.
 
-**Demo video:** [link to be added]
+**Demo video:** <https://youtu.be/UdhjAhNmgno>
 
 ## Bonus: built with a coding agent
 
