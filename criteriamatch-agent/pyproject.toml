@@ -2,7 +2,7 @@
 name = "criteriamatch"
 version = "0.1.0"
 description = "criteriamatch"
-authors = [{ name = "John Doe", email = "john.doe@myemail.com" }]
+authors = [{ name = "Divine Ediebah", email = "divinee@athenaindex.com" }]
 dependencies = [
     "langchain>=1.3.7",
     "langchain-openai>=1.3.0",
